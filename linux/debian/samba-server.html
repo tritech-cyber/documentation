@@ -19,6 +19,16 @@ pre {
 		padding: 5px;
 	
 }
+
+
+.highlight{
+	background-color:#ffff00;
+	color: #f00;
+	
+}
+		
+	
+
 </style>
 </head>
 <div class = "code">
@@ -93,6 +103,51 @@ To access our shared(!) share:
 
 $ smbclient //ourmachine/ourfiles
 
+<span style="color:red" style="background-color:yellow">
+	<span style="background-color: #dedede">
+**********************************
+Notes from Coleman 
+Create a directory in /home/ called users
+#mkdir /home/users
+
+Add a Linux User and place it in the /home/users/
+# useradd -m -d /home/users/username  username
+
+This is how you start the service:
+#systemctl start smbd
+#systemctl restart smbd
+
+# smbpasswd -a share
+
+Example from Coleman:
+This goes at the end of the smb.conf file:
+
+[cyber]
+   comment = Some useful files
+   read only = no
+   locking = no
+   path = /home/users/cyber
+   valid users = cyber cwc
+   guest ok = no
+
+
+[gamedesign]
+   comment = Some useful files
+   read only = no
+   locking = no
+   path = /home/users/gamedesign
+   guest ok = no
+
+[share]
+   comment = Some useful files
+   read only = no
+   locking = no
+   path = /home/users/share
+   valid users = share cwc
+   guest ok = no
+   </span>
+   </span>
+</div>
 </pre>
 </div>
 <footer>
