@@ -7,15 +7,15 @@ pre {
 		font-family:sans-serif;
 		font-size: 14px;
 		background-color: #F5F5F5	;	
-		padding: 5px;
+		padding: 20px;
 	
 }
 
 .code{
-		background-color: #E8E8E8;
-		border-style: solid;
-		border-color: #8eb1e1 #0f0;
-		border-width: 10px;
+		 position: absolute;
+    left: 50px;
+    top: 20px;
+    width:90%;
 		padding: 5px;
 	
 }
@@ -34,6 +34,7 @@ pre {
 <div class = "code">
 <pre>
 <h1>
+Source:
 https://wiki.debian.org/SambaServerSimple
 </h1>
 Install Samba Server
@@ -54,7 +55,8 @@ It would be a good idea to back up this file as su
 
 # nano /etc/samba/smb.conf
 
-In the global section, check the name of the workgroup. It might be useful to know it when you'll try to connect from a Windows machine:
+In the global section, check the name of the workgroup. 
+It might be useful to know it when you'll try to connect from a Windows machine:
 Our Windows Work Group is CYBER
 [global]
    ...
@@ -62,23 +64,14 @@ Our Windows Work Group is CYBER
    
    Locate the home share definition:
 
-[homes]
-In that section you may enable read-write access to the home directories:
-
-   read only = no
-To share files in some other path on the system, add another share definition such as:
-
-[ourfiles]
-   comment = Some useful files
-   read only = no
-   locking = no
-   path = /path_to_our_files
-   guest ok = no
 Add Samba users
 Samba uses it's own password system so users need to be added by root. Note that the users have to exist in /etc/passwd
-
+<span style="color:red" >
+	<span style="background-color: #dedede">
 # smbpasswd -a me
 # smbpasswd -a you
+</span>
+</span>
 You will be prompted for a password for each of those users.
 
 To list existing Samba users:
@@ -90,8 +83,11 @@ Restart the Samba daemon
 or, if you are using systemd
 
 # /usr/sbin/service smbd restart
-Try to access the shares (as a normal user)
-Try locally first, then from another machine on the network which also installed samba client. When prompted, use the password entered when adding the user to Samba.
+
+or
+
+#systemctl start smbd
+#systemctl restart smbd
 
 To access my share:
 
@@ -103,7 +99,7 @@ To access our shared(!) share:
 
 $ smbclient //ourmachine/ourfiles
 
-<span style="color:red" style="background-color:yellow">
+<span style="color:red" >
 	<span style="background-color: #dedede">
 **********************************
 Notes from Coleman 
@@ -147,6 +143,8 @@ This goes at the end of the smb.conf file:
    guest ok = no
    </span>
    </span>
+   
+  Additional notes from https://wiki.debian.org/SambaServerSimple
 </div>
 </pre>
 </div>
