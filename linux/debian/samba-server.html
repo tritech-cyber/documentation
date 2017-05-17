@@ -37,6 +37,7 @@ pre {
 Source:
 https://wiki.debian.org/SambaServerSimple
 </h1>
+<span style="color:red" >
 Install Samba Server
 
 # apt-get install samba
@@ -62,16 +63,51 @@ Our Windows Work Group is CYBER
    ...
    workgroup = CYBER
    
-   Locate the home share definition:
+Locate the home share definition:
+Example from Coleman:
+This goes at the end of the smb.conf file:
+
+[share]
+   comment = Some useful files
+   read only = no
+   locking = no
+   path = /home/users/share
+   valid users = share cwc
+   guest ok = no
 
 Add Samba users
-Samba uses it's own password system so users need to be added by root. Note that the users have to exist in /etc/passwd
-<span style="color:red" >
+Samba uses it's own password system so users need to be added by root. 
+**********************************
+Notes from Coleman 
+Create a directory in /home/ called users
+#mkdir /home/users
+
+Add a Linux User and place it in the /home/users/
+# useradd -m -d /home/users/username  username
+!! Do not create a Linux passwork for this user.
+*****************************************************
+* There are a lot of ways to set up users.          *
+* This method will protect your ~/ (home) directory.*
+*****************************************************
+
+Creating a Samba password.
 	<span style="background-color: #dedede">
 # smbpasswd -a me
 # smbpasswd -a you
 </span>
-</span>
+
+
+This is how you start the service:
+#systemctl start smbd
+#systemctl restart smbd
+
+# smbpasswd -a share
+
+   </span>
+
+   
+
+Additional notes:
 You will be prompted for a password for each of those users.
 
 To list existing Samba users:
@@ -99,51 +135,7 @@ To access our shared(!) share:
 
 $ smbclient //ourmachine/ourfiles
 
-<span style="color:red" >
-	<span style="background-color: #dedede">
-**********************************
-Notes from Coleman 
-Create a directory in /home/ called users
-#mkdir /home/users
 
-Add a Linux User and place it in the /home/users/
-# useradd -m -d /home/users/username  username
-
-This is how you start the service:
-#systemctl start smbd
-#systemctl restart smbd
-
-# smbpasswd -a share
-
-Example from Coleman:
-This goes at the end of the smb.conf file:
-
-[cyber]
-   comment = Some useful files
-   read only = no
-   locking = no
-   path = /home/users/cyber
-   valid users = cyber cwc
-   guest ok = no
-
-
-[gamedesign]
-   comment = Some useful files
-   read only = no
-   locking = no
-   path = /home/users/gamedesign
-   guest ok = no
-
-[share]
-   comment = Some useful files
-   read only = no
-   locking = no
-   path = /home/users/share
-   valid users = share cwc
-   guest ok = no
-   </span>
-   </span>
-   
   Additional notes from https://wiki.debian.org/SambaServerSimple
 </div>
 </pre>
