@@ -1,0 +1,8 @@
+ <Directory "/home/cwc/http">
+                Options Indexes FollowSymLinks
+                IndexOptions FancyIndexing VersionSort NameWidth=*
+                AllowOverride All
+                Require all granted
+                HeaderName /home/cwc/http/cyber/header.html
+                ReadmeName /home/cwc/http/cyber/footer.html
+        </Directory>
