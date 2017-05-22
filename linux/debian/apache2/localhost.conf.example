@@ -1,0 +1,28 @@
+ #cwc
+        ServerAdmin webmaster@localhost
+        DocumentRoot /home/cwc/http
+        <Directory "/home/cwc/http">
+                Options Indexes FollowSymLinks
+                 IndexOptions FancyIndexing VersionSort NameWidth=*
+                AllowOverride All
+                Require all granted
+                HeaderName header.html
+                ReadmeName footer.html
+        </Directory>
+         <Directory "/home/cwc/http/cyber">
+                Options Indexes FollowSymLinks
+                 IndexOptions FancyIndexing VersionSort NameWidth=*
+                AllowOverride All
+                Require all granted
+                HeaderName ./header.html
+                ReadmeName ./footer.html
+        </Directory>
+          <Directory "/home/cwc/http/cyber">
+                Options Indexes FollowSymLinks
+                 IndexOptions FancyIndexing VersionSort NameWidth=*
+                AllowOverride All
+                Require all granted
+                HeaderName ../header.html
+                ReadmeName ../footer.html
+        </Directory>
+
