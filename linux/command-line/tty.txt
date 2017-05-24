@@ -1,0 +1,7 @@
+The virtual terminals (the ones you get to with Ctrl Alt F1-9) go back to the roots of Linux. Remember that Linux was originally a command-line only system and designed for multiple users. The idea was that each user could log into a single tty. This would not happen on the same physical machine of course, think of servers that many computer terminals would connect to. Each user would connect using a different computer and the server log them in to a tty.
+
+This has nothing to do with the tty command which is part of coreutils. The tty command is simply a tool that lets you know the name of the terminal you are currently using.
+
+The "terminal" (actually called a "terminal emulator") is simply a GUI program that mimics the old behavior. It lets you run a shell (bash in the default Ubuntu) from within your X session.
+
+The main point is that both the virtual terminals and the terminal emulators provide you with a command line interface, a shell. They are basically the same thing. The only important difference from a practical point of view is that the terminal emulators run interactive, non-login shells while if you drop into a tty and login there, you will run an interactive, login shell. For more information on the differences between these two types of shell, see here.
