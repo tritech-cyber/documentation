@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://learn.adafruit.com/series/learn-linux-with-raspberry-pi -->
+<html lang="en-US" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="mask-icon" href="https://learn.adafruit.com/assets/adafruit_favicon-d77f206e6cc65b40101b6e5b8987f7c35cb6a283ea73c0adad50c37f7347c61a.svg" color="#000000">
+<link rel="shortcut icon" type="image/x-icon" href="https://learn.adafruit.com/assets/favicon-0c79bd4bc582e6d4cf3afe417bd1e28120527c09d92c08a6464690c5bf6b85f4.ico">
+<title>Adafruit Learning System</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="QSQIpyra39A16gpOYF4mYnv6alRGhAbd9tonds1vaJR5B8mX6wHDSETObAEbxm8pHR168DnnkhHFt+ykUDYoYg==">
+<link rel="alternate" type="application/atom+xml" title="ATOM" href="https://learn.adafruit.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://learn.adafruit.com/feed.rss">
+<link rel="stylesheet" media="screen" href="./Adafruit Learning System_files/fonts.css">
+<link rel="stylesheet" media="screen" href="./Adafruit Learning System_files/application-25e997c8832e020ca062501e03fde314d20fad31db6e30ecbe2861ca039ecc3d.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <![endif]-->
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="application series show">
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<div id="messaging-wrapper" data-load="https://www.adafruit.com/api/multi_message.php"></div>
+<header id="adafruit-header">
+<div id="small-header-content" class="container visible-xs">
+<a id="small-header-menu-button" class="menu-link" href="https://learn.adafruit.com/series/learn-linux-with-raspberry-pi#small-header-nav">
+<i class="fa fa-bars"> </i>
+</a>
+<div class="small-header-logo">
+<a href="https://www.adafruit.com/">
+<img id="small-logo" height="50" width="50" alt="Adafruit Logo" title="Adafruit Logo" src="./Adafruit Learning System_files/adafruit_logo_small.png">
+</a> </div>
+<a class="small-header-cart" href="https://www.adafruit.com/shopping_cart">
+<span class="small-cart-count">0</span>
+<i class="fa fa-shopping-cart"></i>
+</a> </div>
+<nav id="small-header-nav" role="navigation" class="visible-xs">
+<div class="block">
+<ul>
+<li>
+<div id="small-search-wrapper">
+<div id="small-search-inner-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="mobile-search" style="display:none;">Search</label>
+<input id="mobile-search" type="text" name="q" placeholder="Search Adafruit">
+<i class="fa fa-search"></i>
+</form>
+</div>
+</div>
+</li>
+<li>
+<a href="https://www.adafruit.com/categories">SHOP</a>
+</li>
+<li>
+<a href="https://blog.adafruit.com/">BLOG</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/">LEARN</a>
+</li>
+<li>
+<a href="https://forums.adafruit.com/">FORUMS</a>
+</li>
+<li>
+<a href="https://www.youtube.com/adafruit">VIDEOS</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/users/sign_in">SIGN IN</a>
+</li>
+<li>
+<a class="close-btn" id="small-nav-close-button" href="https://learn.adafruit.com/series/learn-linux-with-raspberry-pi#top">CLOSE MENU</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id="header-content" class="container hidden-xs">
+<div id="header-profile">
+<a id="header-cart" href="https://www.adafruit.com/shopping_cart">
+0 Items <i class="fa fa-shopping-cart"></i>
+</a> <div id="account">
+<a href="https://learn.adafruit.com/users/sign_in">Sign In</a>
+</div>
+<div id="search-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="search" style="display:none;">Search</label>
+<input id="search" type="text" name="q" autocomplete="off" data-page="" ,="" data-app-id="W9DMM4OTH0" data-app-key="e613bcda3453b9ef887e2724362f9e57" data-app-index="learn_guides_production" data-app-uri="https://learn.adafruit.com">
+          <i class="fa fa-search"></i>
+          <input type="submit" style="visibility: hidden; position: fixed;">
+        </form>
+      </div>
+    </div>
+    <div id="navigation">
+      <a href="https://www.adafruit.com/">
+        <img id="logo" width="172" height="60" alt="Adafruit Logo" title="Adafruit Logo" src="./Adafruit Learning System_files/logo_2x.png">
+</a>      <nav class="hover-menu">
+  <ul>
+    <li id="nav-shop" data-load="https://www.adafruit.com/api/flyouts/shop.html"><a href="https://www.adafruit.com/">SHOP</a>
+    </li>
+    <li id="nav-blog" data-load="https://blog.adafruit.com/adafruit-blog-flyouts"><a href="https://blog.adafruit.com/">BLOG</a>
+    </li>
+    <li id="nav-learn" data-load="https://learn.adafruit.com/api/hover-menu/flyouts/learn.html"><a href="https://learn.adafruit.com/">LEARN</a>
+    </li>
+    <li id="nav-forums"><a href="https://forums.adafruit.com/">FORUMS</a>
+    </li>
+    <li id="nav-forums"><a href="https://www.youtube.com/adafruit">VIDEOS</a>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+      <div id="main-content">
+        <div id="guide-wrapper">
+      <div id="categories-block" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-image: url(/assets/hero/category/NeoPixel_Shield.jpg);">
+      <div id="categories-content" class="container">
+            <a class="home-link" href="https://learn.adafruit.com/">
+              <i class="fa fa-chevron-left"></i> LEARN HOME
+</a>          <div class="category-name">SERIES</div>
+          <div class="stats">
+            <div>LEARN LINUX WITH RASPBERRY PI</div>
+            10 GUIDES
+          </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+
+  <div id="guide-content" class="container">
+      <div id="masonry-wrapper" class="row" style="position: relative; visibility: visible; height: 2021.38px;">
+        <div class="masonry-width"></div>
+        	<div class="818-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 0px; top: 0px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                    <div class="guide-type featured-guide" style="z-index: 1;">
+                        <a href="https://learn.adafruit.com/guides/featured">FEATURED</a>
+                    </div>
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/what-is-linux">
+                          What is this "Linux", anyhow?<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/what-is-linux">
+                    A gentle introduction to the world's most popular free OS.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/what-is-linux">
+								<img src="./Adafruit Learning System_files/pngn.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/818/medium310/pngn.png?1448302006" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/818/medium800/pngn.png?1448302006">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/what-is-linux">
+                        Linux is everywhere, as the operating system that drives countless devices from the tiny to the gigantic. We'll explain what that actually means, tell you how you can get ahold of your own Linux computer, and set the stage for an overview of the fundamentals of day-to-day use.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="846-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 330px; top: 0px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/what-is-the-command-line">
+                          What is the Command Line?<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/what-is-the-command-line">
+                    An introduction to the interface at the heart of Linux &amp; Unix systems.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/what-is-the-command-line">
+								<img src="./Adafruit Learning System_files/get_you_shell.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/846/medium310/get_you_shell.png?1448302029" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/846/medium800/get_you_shell.png?1448302029">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/what-is-the-command-line">
+                        Modern GNU/Linux systems offer graphical desktop environments both simple and sophisticated, but at the heart of the Unix tradition is a more fundamental abstraction: Text. We'll sketch out the origins of the command line, and set the stage for an exploration of its unique abilities.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="867-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 660px; top: 0px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/an-illustrated-shell-command-primer">
+                          An Illustrated Shell Command Primer<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/an-illustrated-shell-command-primer">
+                    A fast, simple overview of basic shell commands, with pictures.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/an-illustrated-shell-command-primer">
+								<img src="./Adafruit Learning System_files/pngn_primer_sitting.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/867/medium310/pngn_primer_sitting.png?1448302052" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/867/medium800/pngn_primer_sitting.png?1448302052">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/an-illustrated-shell-command-primer">
+                        Now that we've established what the command line is and how to get a shell, we'll introduce a set of commands fundamental to doing useful work on the GNU/Linux command line.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="923-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 990px; top: 0px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/basic-shell-magic">
+                          An Illustrated Guide to Shell Magic: Standard I/O &amp; Redirection<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/basic-shell-magic">
+                    An introduction to pipelines, redirection, and other such incantations in the shell.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/basic-shell-magic">
+								<img src="./Adafruit Learning System_files/pngn_magic_hat.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/923/medium310/pngn_magic_hat.png?1448302086" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/923/medium800/pngn_magic_hat.png?1448302086">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/basic-shell-magic">
+                        With a sampling of core utilities and other commands established, we begin to explore the concepts that make the command line reusable and composable.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="938-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 330px; top: 605px;">
+        <div class="guide-block last" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/an-illustrated-guide-to-shell-magic-typing-less-and-doing-more">
+                          An Illustrated Guide to Shell Magic: Typing Less &amp; Doing More<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/an-illustrated-guide-to-shell-magic-typing-less-and-doing-more">
+                    A look at wildcards, aliases, custom scripts, and other force multipliers in the shell.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/an-illustrated-guide-to-shell-magic-typing-less-and-doing-more">
+								<img src="./Adafruit Learning System_files/pngn_typing.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/938/medium310/pngn_typing.png?1448302092" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/938/medium800/pngn_typing.png?1448302092">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/an-illustrated-guide-to-shell-magic-typing-less-and-doing-more">
+                        A survey of techniques by which the shell user can express more without getting bogged down in tedious repetition, and tie together various tools within the GNU/Linux environment.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="950-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 660px; top: 725px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer">
+                          RasPipe: A Raspberry Pi Pipeline Viewer, Part 1<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer">
+                    An exploration of standard IO, Unix filters, and simple graphics with Python and Pygame.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer">
+								<video class="img img-responsive guide-video" preload="auto" muted="muted" loop="loop" autoplay="autoplay" poster="https://cdn-learn.adafruit.com/guides/images/000/000/950/medium640thumb/brennen.gif?1448380902">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/000/950/medium640mp4/brennen.mp4?1448380902">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/000/950/medium640webm/brennen.webm?1448380902" type="video/webm; codecs=vp8,vorbis">
+									Your browser does not support the video tag.
+								</video>
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer">
+                        In part 1 of this project, we'll learn how to use Pygame on a Raspberry Pi with Adafruit's PiTFT to build miniature visualizers for Linux shell pipelines.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="975-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 0px; top: 727px;">
+        <div class="guide-block" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer-part-2">
+                          RasPipe: A Raspberry Pi Pipeline Viewer, Part 2<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer-part-2">
+                    An exploration of network communication from the shell using Pygame and the PiTFT.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer-part-2">
+								<video class="img img-responsive guide-video" preload="auto" muted="muted" loop="loop" autoplay="autoplay" poster="https://cdn-learn.adafruit.com/guides/images/000/000/975/medium640thumb/MVI_5346_56-179.gif?1448380970">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/000/975/medium640mp4/MVI_5346_56-179.mp4?1448380970">
+									<source src="https://cdn-learn.adafruit.com/guides/images/000/000/975/medium640webm/MVI_5346_56-179.webm?1448380970" type="video/webm; codecs=vp8,vorbis">
+									Your browser does not support the video tag.
+								</video>
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspipe-a-raspberry-pi-pipeline-viewer-part-2">
+                        Extending our PiTFT text visualizer Using netcat (a command-line utility for easily pushing traffic around a network),  Node.js (a fast, capable server-side JavaScript implementation with a bunch of useful library code available) and Flask (a fast and easy Python web application framework.)
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="895-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 990px; top: 740px;">
+        <div class="guide-block last" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/raspberry-pi-kernel-o-matic">
+                          Raspberry Pi Kernel-o-Matic<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/raspberry-pi-kernel-o-matic">
+                    Kreate Kustom Kernels Kwickly!
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/uniontownlabs">
+          <span class="name">Todd Treece</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/raspberry-pi-kernel-o-matic">
+								<img src="./Adafruit Learning System_files/pngn_kernelomatic_with_logos.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/895/medium310/pngn_kernelomatic_with_logos.jpg?1448302074" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/895/medium800/pngn_kernelomatic_with_logos.jpg?1448302074">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/raspberry-pi-kernel-o-matic">
+                        If you've ever needed to compile the Linux Kernel on a Raspberry Pi, you've probably noticed that it takes a long time. We sure have!
+If you have a desktop computer or a laptop with decent hardware specs, it seems like there ought to be an easy way to use all that processing power to generate a new kernel for your Pi, but it can be tricky to figure out the specifics. Enter the Adafruit Pi Kernel-o-Matic!
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="991-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 660px; top: 1202px;">
+        <div class="guide-block last" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/external-drive-as-raspberry-pi-root">
+                          Using an External Drive as a Raspberry Pi Root Filesystem<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/external-drive-as-raspberry-pi-root">
+                    Quickly set up your Pi to boot with a USB stick or external hard drive as main storage.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/external-drive-as-raspberry-pi-root">
+								<img src="./Adafruit Learning System_files/raspberry_pi_IMG_5590.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/991/medium310/raspberry_pi_IMG_5590.jpg?1448302133" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/991/medium800/raspberry_pi_IMG_5590.jpg?1448302133">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/external-drive-as-raspberry-pi-root">
+                        One of the more noticeable limitations of the Raspberry Pi is using an SD card for its main storage. This guide details hooking up an external drive, copying your root filesystem to it, and configuring the kernel to treat the external drive as root. It includes a helper script which automates most of these steps.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+	<div class="1094-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12" style="position: absolute; left: 0px; top: 1283px;">
+        <div class="guide-block last" style="visibility: visible;">
+            <div class="title-bar">
+                <div class="title">
+                  <h5>
+                      <a href="https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer">
+                          Running Programs Automatically on Your Tiny Computer<br>
+</a>                  </h5>
+                  <div class="tagline">
+                    <a href="https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer">
+                    Learn how to start a script on boot on common GNU/Linux systems.
+</a>                	</div>
+									    <div class="author">by
+      <a href="https://learn.adafruit.com/users/bpb">
+          <span class="name">Brennen Bearnes</span>
+</a>    </div>
+
+                </div>
+            </div>
+						<a href="https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer">
+								<img src="./Adafruit Learning System_files/checklist.png" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/001/094/medium310/checklist.png?1448302256" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/001/094/medium800/checklist.png?1448302256">
+
+</a>            <div class="details">
+
+                <div class="description">
+                    <a href="https://learn.adafruit.com/running-programs-automatically-on-your-tiny-computer">
+                        Projects built on a system like the Raspberry Pi or Beaglebone Black often need a good way to run scripts or services at boot time, and ensure that they stay running. We'll walk through two widespread solutions to this problem, one old and one new.
+</a>                </div>
+
+            </div>
+
+
+        </div>
+	</div>
+
+      </div>
+
+      <div class="clear"></div>
+
+  </div>
+    
+  <div class="clear"></div>
+</div>
+
+      </div>
+        <footer id="adafruit-footer">
+    <div id="footer-content" class="container">
+      <div class="row">
+        <div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
+          <nav>
+            <ul>
+              <li><a href="https://www.adafruit.com/contact_us">CONTACT</a></li>
+              <li><a href="https://www.adafruit.com/support">SUPPORT</a>
+              </li><li><a href="https://www.adafruit.com/distributors">DISTRIBUTORS</a></li>
+              <li><a href="https://www.adafruit.com/educators">EDUCATORS</a></li>
+              <li><a href="https://www.adafruit.com/jobs">JOBS</a></li>
+              <li><a href="https://www.adafruit.com/faq">FAQ</a></li>
+              <li><a href="https://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a></li>
+              <li><a href="https://www.adafruit.com/terms_of_service/">TERMS OF SERVICE</a></li>
+              <li><a href="https://www.adafruit.com/privacy">PRIVACY &amp; LEGAL</a></li>
+              <li><a href="https://www.adafruit.com/about">ABOUT US</a></li>
+            </ul>
+          </nav>
+          <div id="footer-copyright">
+            <a href="http://nytm.org/made-in-nyc/">ENGINEERED IN NYC</a> <span>Adafruit&nbsp;®</span>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
+          <div id="footer-quote" class="">
+            "I don't think there's anything like saving someone's life to bring you satisfaction and happiness"
+            <span class="quote-author">- <a href="http://en.wikipedia.org/wiki/Stephanie_Kwolek">Stephanie Kwolek</a></span>
+          </div>
+
+        </div>
+        <div id="footer-seals">
+          <img class="img-responsive" src="./Adafruit Learning System_files/seals_2x.jpg" alt="Seals 2x">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" async="" src="./Adafruit Learning System_files/ec.js"></script><script async="" src="./Adafruit Learning System_files/analytics.js"></script><script>
+    window.rails_env = 'production';
+  </script>
+
+      <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-7723544-1', 'auto');  // Replace with your property ID.
+    ga('require', 'ec');
+    ga('send', 'pageview');
+
+    </script>
+    <!-- End Google Analytics -->
+
+      <!-- Google Code for Remarketing Tag -->
+      <!--------------------------------------------------
+      Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+      --------------------------------------------------->
+      <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 1014834932;
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+      </script>
+      <script type="text/javascript" src="./Adafruit Learning System_files/conversion.js">
+      </script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Adafruit Learning System_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+      <noscript>
+      &lt;div style="display:inline;"&gt;
+      &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1014834932/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+      &lt;/div&gt;
+      </noscript>
+
+  <script src="./Adafruit Learning System_files/application-f7a3a93d936485387ea294958fd6f265d23d5194d8591b1ff81366e8a40fea10.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://learn.adafruit.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://learn.adafruit.com/search?q={search_term}",
+        "query-input": "required name=search_term"
+      }
+    }
+  </script>
+
+
+</body></html>
