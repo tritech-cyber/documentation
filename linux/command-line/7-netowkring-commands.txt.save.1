@@ -1,0 +1,62 @@
+1. Ping
+
+This command allows you to determine TCP/IP, networks and IP address. It also determines the issues with network and assists in resolving them.
+
+ping x.x.x.x (where x – x is the IP address). You can try pinging 8.8.8.8, which is Google default IP address. Or you can “ping www.google.com” (this is the website you want to ping, if you don’t know 
+the IP address).
+
+2. nslookup
+
+Nslookup is a network administration command line that is used for querying the Domain Name System (DNS) to obtain the IP address mapping or domain name.
+
+For instance: ‘nslookup www.google.com’ (this command allows you to find IP address of www.google.com).
+
+Yeah! You can also find out the IP address of specific Mail Servers through nslookup.
+
+nslookup (press enter)
+
+set type=mx (press enter again)
+
+google.com/yahoo.com
+
+This command will give you the mail server of IP of google.com/yahoo.com.
+
+3. tracert
+
+tracert is a command-line utility that records the route through the internet between your computer and a specified destination computer. It calculates and displays the amount of time each hop took.
+
+tracert x.x.x.x (x is the IP address)
+
+or, ‘tracetrt www.google.com‘ (if you want to know the IP address of www.google.com).
+
+
+ 
+4. arp
+
+arp command will show you the arp table. This command also helps you to find out if someone has made up poisoning in your LAN using this command.
+
+arp -a
+
+5. route
+
+route command will show you the routing table, gateway, interface and metric.
+
+route print
+
+6. ipconfig
+
+This is of the most important command, it will show you a lot of useful things, for instance – your IP, Gateway, DNS in use etc.
+
+ipconfig or ipconfig/all
+
+Also, if you are using dynamic IP address and want to change it, then type.
+
+ipconfig/release (this will release your IP address)
+
+ipconfig/renew (this will renew your IP address)
+
+
+ 
+7. Netstat CMD command
+
+
