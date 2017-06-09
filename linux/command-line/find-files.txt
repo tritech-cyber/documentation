@@ -1,0 +1,6 @@
+find /home -group ftpuser
+
+find all *.c files belonging to a group called "ftpusers" in 
+/data/project
+
+find /data/project -group ftpuser -name "*.c"
