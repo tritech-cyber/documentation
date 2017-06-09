@@ -1,0 +1,15 @@
+
+5 commands to check memory usage on Linux
+
+$ free -m
+
+/proc/meminfo
+
+$ vmstat -s
+
+$ sudo dmidecode -t 17
+
+# dmidecode 2.11
+
+Read more at Binary Tides
+
