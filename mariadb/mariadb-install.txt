@@ -1,0 +1,7 @@
+As root type:
+apt-get install mariadb-server mariadb-client
+
+Type:
+mysql_secure_installation 
+
+Document the root password.
