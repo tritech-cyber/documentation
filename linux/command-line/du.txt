@@ -1,0 +1,2 @@
+du -sh file_path
+df -H (total disk usage)
