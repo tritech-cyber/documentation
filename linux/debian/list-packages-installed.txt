@@ -1,0 +1,23 @@
+https://wiki.debian.org/ListInstalledPackages
+
+List all installed packages
+With version and architecture information, and description, in a table:
+
+dpkg-query -l
+Package names only, one per line:
+
+dpkg-query -f '${binary:Package}\n' -W
+List packages using a search pattern
+It is possible to add a search pattern to list packages:
+
+
+dpkg-query -l 'foo*'
+Show status of all packages on the system
+To check the status of all packages on your system:
+
+
+dpkg-query -l '*' | less
+This will show all packages (one line each) that are in various stages of installation (including packages that were removed but not purged) and packages just available from a repository. To show only installed packages:
+
+
+dpkg -l | grep '^.i'
