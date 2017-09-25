@@ -5,5 +5,5 @@ Source: https://docs.python.org/2/library/idle.html
   -- Running a progam in terminal (tty)
   -- At Tri-Tech we recommend running programs from Debian using tty or from ter
 - Vaiables Types
-  -- Integer, Charater, Float, String
--
+  -- Integer, Float, String, and Charater (Python has only 'string')
+
