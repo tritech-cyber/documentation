@@ -1,0 +1,23 @@
+tma:~/ombra# apt-get install mariadb-server
+mariadb-cleint
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  galera-3 gawk libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libfcgi-perl libhtml-template-perl libjemalloc1 libmariadbclient18 libreadline5 libsigsegv2
+  libterm-readkey-perl mariadb-client-10.1 mariadb-client-core-10.1 mariadb-common mariadb-server-10.1 mariadb-server-core-10.1 mysql-common socat
+Suggested packages:
+  gawk-doc libclone-perl libmldbm-perl libnet-daemon-perl libsql-statement-perl libipc-sharedcache-perl mailx mariadb-test netcat-openbsd tinyca
+The following NEW packages will be installed:
+  galera-3 gawk libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libfcgi-perl libhtml-template-perl libjemalloc1 libmariadbclient18 libreadline5 libsigsegv2
+  libterm-readkey-perl mariadb-client-10.1 mariadb-client-core-10.1 mariadb-common mariadb-server mariadb-server-10.1 mariadb-server-core-10.1 mysql-common socat
+0 upgraded, 21 newly installed, 0 to remove and 0 not upgraded.
+Need to get 25.6 MB of archives.
+After this operation, 191 MB of additional disk space will be used.
+Do you want to continue? [Y/n] 
+
+systemctl start mariadb
+systemctl enable mariadb
+#mysql_secure_installation
+
+$sudo mysql -u root -p
