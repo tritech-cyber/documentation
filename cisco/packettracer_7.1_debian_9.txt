@@ -1,17 +1,8 @@
-tar -xvzf PacketTracer71_64bit_linux.tar.gz
+tar -xvzf PacketTracer71_64bit_linux.tar.gz in a separate directory.
 
 dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
-ldd /opt/pt/bin/PacketTracer7
 
-apt-get install libQt5WebKitWidgets
-apt-get install libqt5webkit5
-apt-get install libqt5webkit5-dev
-apt-get install ibQt5Multimedia
-apt-get install libqt5multimedia5
-apt-get install libqt5multimedia5-plugins
-apt-get install libqt5webkit5-dbg
-apt-get install libqt5script5
-apt-get install libqt5scripttools5
+apt-get install libqt5webkit5 libqt5multimedia5 libqt5xml5 libqt5script5 libqt5scripttools5;
 
 cwc@tma:~$ ldd /opt/pt/bin/PacketTracer7 
 	linux-vdso.so.1 (0x00007ffcbc757000)
