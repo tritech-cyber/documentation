@@ -1,0 +1,67 @@
+PacketTracer running under Debian9 with XCFE4 requires the following packges.
+Download libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb then install it with "dplg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb"
+Then run apt-get install libqt5webkit5 libqt5multimedia5 libqt5xml5 libqt5script5 libqt5scripttools5;
+Pakcettracer needs to be started as follows unless bash for packertracer is changed.
+/opt/pt/bin/PacketTracer7 
+
+notes:
+dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb
+apt-get install libqt5webkit5 libqt5multimedia5 libqt5xml5 libqt5script5 libqt5scripttools5;
+
+Running ldd showed the packages needed to run the application.
+$ ldd /opt/pt/bin/PacketTracer7 
+	linux-vdso.so.1 (0x00007ffe4bc95000)
+	libcrypto.so.1.0.0 => /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 (0x00007f87f6418000)
+	libQt5WebKitWidgets.so.5 => not found
+	libQt5WebKit.so.5 => not found
+	libQt5Multimedia.so.5 => not found
+	libQt5PrintSupport.so.5 => not found
+	libQt5Svg.so.5 => /usr/lib/x86_64-linux-gnu/libQt5Svg.so.5 (0x00007f87f69c9000)
+	libQt5Widgets.so.5 => /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5 (0x00007f87f5db5000)
+	libQt5Gui.so.5 => /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5 (0x00007f87f587c000)
+	libQt5Network.so.5 => /usr/lib/x86_64-linux-gnu/libQt5Network.so.5 (0x00007f87f6859000)
+	libQt5Xml.so.5 => not found
+	libQt5Script.so.5 => not found
+	libQt5ScriptTools.so.5 => not found
+	libQt5Core.so.5 => /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 (0x00007f87f53ad000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f87f5190000)
+	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f87f4e0e000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f87f4b0a000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f87f48f3000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f87f4554000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f87f4350000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f87f4136000)
+	libharfbuzz.so.0 => /usr/lib/x86_64-linux-gnu/libharfbuzz.so.0 (0x00007f87f3ea1000)
+	libGL.so.1 => /usr/lib/x86_64-linux-gnu/libGL.so.1 (0x00007f87f3c2f000)
+	libpng16.so.16 => /usr/lib/x86_64-linux-gnu/libpng16.so.16 (0x00007f87f39fc000)
+	libproxy.so.1 => /usr/lib/x86_64-linux-gnu/libproxy.so.1 (0x00007f87f37db000)
+	libicui18n.so.57 => /usr/lib/x86_64-linux-gnu/libicui18n.so.57 (0x00007f87f3361000)
+	libicuuc.so.57 => /usr/lib/x86_64-linux-gnu/libicuuc.so.57 (0x00007f87f2fb9000)
+	libpcre16.so.3 => /usr/lib/x86_64-linux-gnu/libpcre16.so.3 (0x00007f87f2d50000)
+	libdouble-conversion.so.1 => /usr/lib/x86_64-linux-gnu/libdouble-conversion.so.1 (0x00007f87f2b3f000)
+	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007f87f282b000)
+	librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f87f2623000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f87f6814000)
+	libfreetype.so.6 => /usr/lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007f87f2374000)
+	libgraphite2.so.3 => /usr/lib/x86_64-linux-gnu/libgraphite2.so.3 (0x00007f87f2147000)
+	libexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007f87f1f1d000)
+	libxcb-dri3.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0 (0x00007f87f1d1a000)
+	libxcb-present.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-present.so.0 (0x00007f87f1b17000)
+	libxcb-sync.so.1 => /usr/lib/x86_64-linux-gnu/libxcb-sync.so.1 (0x00007f87f1910000)
+	libxshmfence.so.1 => /usr/lib/x86_64-linux-gnu/libxshmfence.so.1 (0x00007f87f170e000)
+	libglapi.so.0 => /usr/lib/x86_64-linux-gnu/libglapi.so.0 (0x00007f87f14df000)
+	libXext.so.6 => /usr/lib/x86_64-linux-gnu/libXext.so.6 (0x00007f87f12cd000)
+	libXdamage.so.1 => /usr/lib/x86_64-linux-gnu/libXdamage.so.1 (0x00007f87f10ca000)
+	libXfixes.so.3 => /usr/lib/x86_64-linux-gnu/libXfixes.so.3 (0x00007f87f0ec4000)
+	libX11-xcb.so.1 => /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1 (0x00007f87f0cc2000)
+	libX11.so.6 => /usr/lib/x86_64-linux-gnu/libX11.so.6 (0x00007f87f0982000)
+	libxcb.so.1 => /usr/lib/x86_64-linux-gnu/libxcb.so.1 (0x00007f87f075a000)
+	libxcb-glx.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0 (0x00007f87f053f000)
+	libxcb-dri2.so.0 => /usr/lib/x86_64-linux-gnu/libxcb-dri2.so.0 (0x00007f87f033a000)
+	libXxf86vm.so.1 => /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1 (0x00007f87f0134000)
+	libdrm.so.2 => /usr/lib/x86_64-linux-gnu/libdrm.so.2 (0x00007f87eff24000)
+	libicudata.so.57 => /usr/lib/x86_64-linux-gnu/libicudata.so.57 (0x00007f87ee4a7000)
+	libpcre.so.3 => /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007f87ee234000)
+	libXau.so.6 => /usr/lib/x86_64-linux-gnu/libXau.so.6 (0x00007f87ee030000)
+	libXdmcp.so.6 => /usr/lib/x86_64-linux-gnu/libXdmcp.so.6 (0x00007f87ede2a000)
+	libbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007f87edc14000)
