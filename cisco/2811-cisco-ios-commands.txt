@@ -1,0 +1,51 @@
+Router>?
+Exec commands:
+  access-enable    Create a temporary Access-List entry
+  access-profile   Apply user-profile to interface
+  clear            Reset functions
+  connect          Open a terminal connection
+  credential       load the credential info from file system
+  crypto           Encryption related commands.
+  disable          Turn off privileged commands
+  disconnect       Disconnect an existing network connection
+  emm              Run a configured Menu System
+  enable           Turn on privileged commands
+  ethernet         Ethernet parameters
+  exit             Exit from the EXEC
+  help             Description of the interactive help system
+  ips              Intrusion Prevention System
+  lat              Open a lat connection
+  lig              LISP Internet Groper
+  lock             Lock the terminal
+  login            Log in as a particular user
+  logout           Exit from the EXEC
+  modemui          Start a modem-like user interface
+  mrinfo           Request neighbor and version information from a multicast
+                   router
+  mstat            Show statistics after multiple multicast traceroutes
+  mtrace           Trace reverse multicast path from destination to source
+  name-connection  Name an existing network connection
+  pad              Open a X.29 PAD connection
+  ping             Send echo messages
+  ppp              Start IETF Point-to-Point Protocol (PPP)
+  radius           radius exec commands
+  release          Release a resource
+  renew            Renew a resource
+  resume           Resume an active network connection
+  rlogin           Open an rlogin connection
+  set              Set system parameter (not config)
+  show             Show running system information
+  slip             Start Serial-line IP (SLIP)
+  ssh              Open a secure shell client connection
+  systat           Display information about terminal lines
+  tclquit          Quit Tool Command Language shell
+  telnet           Open a telnet connection
+  terminal         Set terminal line parameters
+  tn3270           Open a tn3270 connection
+  traceroute       Trace route to destination
+  trm              Trend Registration Module
+  tunnel           Open a tunnel connection
+  udptn            Open an udptn connection
+  where            List active connections
+  x28              Become an X.28 PAD
+  x3               Set X.3 parameters on PAD

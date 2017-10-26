@@ -1,0 +1,4 @@
+$ sudo dmesg |grep tty
+[    0.000000] console [tty0] enabled
+[    0.874192] 00:02: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[    0.895378] 0000:00:16.3: ttyS1 at I/O 0xf0e0 (irq = 17, base_baud = 115200) is a 16550A
