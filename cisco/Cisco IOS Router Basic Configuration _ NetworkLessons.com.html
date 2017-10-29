@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/ -->
+<html lang="en-US" id="arve" prefix="og: http://ogp.me/ns#" class="sdrn_desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Cisco IOS Router Basic Configuration | NetworkLessons.com</title>
+
+
+
+
+<!--// Shieldsquare Javascript -->
+<div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div><script async="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/analytics.js"></script><script async="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/aperture.js"></script><script type="text/javascript">window.mod_pagespeed_start = Number(new Date());</script><script>
+
+        function ssJSCodeWrapper(){
+
+            if((window["ss_uzjs_ssresp"] == 0)) {
+                     /*Action to be taken for human impression*/
+                }
+
+        }
+
+        function ssJSImmediator(){
+            if(typeof window.ssJSConnWriteCookies === "function"){
+                window.ssJSConnWriteCookies();
+            } else {
+                window["ss_uzjs_ssresp"] = 0;
+                window["ss_uzjs_datasent"] = true;
+                ssJSCodeWrapper();
+            }
+        }
+
+        (function(w, d, e, u, c, g, t ,a ,b){
+                w["SSJSConnectorObj"] = w["SSJSConnectorObj"] || {ss_cid : c, domain_info: g};
+                w["ss_uzjs_datasent"] = w["ss_uzjs_datasent"] || false;
+                a = d.createElement(e);
+                a.async = true;
+                a.src = u;
+                b = d.getElementsByTagName(e)[0];
+                b.parentNode.insertBefore(a, b);
+                if(typeof setTimeout === "function"){
+                    setTimeout(ssJSImmediator, t);
+                } else {
+                    window["ss_uzjs_ssresp"] = 0;
+                    window["ss_uzjs_datasent"] = true;
+                    ssJSCodeWrapper();
+                }
+        })(window, document, "script" , "https://cdn.perfdrive.com/aperture/aperture.js" , "bfa5", 2, 2000);
+
+
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-2851594-7', 'auto');
+  ga('send', 'pageview', { 'dimension1': 'Not Logged In' }); 
+</script>
+
+
+<link rel="pingback" href="https://networklessons.com/xmlrpc.php">
+<style type="text/css">
+
+.ui-menu .ui-menu-item { font-size: 14px; background: #FFFFFF; color: #333333; font-weight: normal; text-shadow: 0; border: 0; -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; white-space: nowrap; }
+
+.ui-menu .ui-menu-item.ui-state-focus, .ui-menu .ui-menu-item.ui-state-hover, .ui-menu .ui-menu-item.ui-state-active { font-size: 14px; background: #EFEFEF; color: #333333; margin: 0; text-shadow: 0; border: 0; }
+
+.acs_suggesting { background: url(https://networklessons.com/wp-content/plugins/cloud-search/images/loading.gif) no-repeat 98% 50% !important; }
+
+</style>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v5.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="This tutorial explains how to access your Cisco IOS router, erase the startup configuration, verify interfaces and configure IP addresses.">
+<link rel="canonical" href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/">
+<link rel="publisher" href="https://plus.google.com/118343980720629850208">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cisco IOS Router Basic Configuration | NetworkLessons.com">
+<meta property="og:description" content="This tutorial explains how to access your Cisco IOS router, erase the startup configuration, verify interfaces and configure IP addresses.">
+<meta property="og:url" content="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/">
+<meta property="og:site_name" content="NetworkLessons.com">
+<meta property="article:tag" content="Router">
+<meta property="article:section" content="CCNA Routing &amp; Switching ICND1 100-105">
+<meta property="article:published_time" content="2014-01-22T13:54:00+00:00">
+<meta property="article:modified_time" content="2017-08-23T10:19:42+00:00">
+<meta property="og:updated_time" content="2017-08-23T10:19:42+00:00">
+<meta property="og:image" content="https://networklessons.com/wp-content/uploads/2014/01/newbie-button-keyboard.jpg">
+<meta property="og:image:secure_url" content="https://networklessons.com/wp-content/uploads/2014/01/newbie-button-keyboard.jpg">
+<meta property="og:image:width" content="405">
+<meta property="og:image:height" content="297">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/networklessons.com\/","name":"NetworkLessons.com","potentialAction":{"@type":"SearchAction","target":"https:\/\/networklessons.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/networklessons.com\/cisco\/ccna-routing-switching-icnd1-100-105\/cisco-ios-router-basic-configuration\/","sameAs":["https:\/\/plus.google.com\/118343980720629850208"],"@id":"#organization","name":"NetworkLessons.com","logo":"https:\/\/networklessons.com\/wp-content\/uploads\/2014\/10\/nwl-blue-background.png"}</script>
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/">
+<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com/">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="NetworkLessons.com » Feed" href="https://networklessons.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NetworkLessons.com » Comments Feed" href="https://networklessons.com/comments/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/networklessons.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.2"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="affwp-forms-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/forms.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="acs_style_suggest-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/cloud-search-suggest.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="easy_testimonial_style-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="easy_testimonial_rateit_style-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/rateit.css" type="text/css" media="all">
+<link rel="stylesheet" id="easy_testimonials_pro_style-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/easy_testimonials_pro.css" type="text/css" media="all">
+<link rel="stylesheet" id="cmd_post_nav-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Custom-Menu-Driven-Prev-Next-links.css" type="text/css" media="all">
+<link rel="stylesheet" id="emnl_breadcrumbs-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/emnl_breadcrumbs.css" type="text/css" media="all">
+<link rel="stylesheet" id="urlconditionalmenu-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/url-conditional-menu.css" type="text/css" media="all">
+<link rel="stylesheet" id="geotarget-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/geotarget-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="collapseomatic-css-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/light_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="membermouse-jquery-css-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery-ui.css" type="text/css" media="all">
+<link rel="stylesheet" id="membermouse-main-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mm-main.css" type="text/css" media="all">
+<link rel="stylesheet" id="membermouse-buttons-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mm-buttons.css" type="text/css" media="all">
+<link rel="stylesheet" id="membermouse-font-awesome-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/font-awesome.min(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-notification-bar-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/wpfront-notification-bar.css" type="text/css" media="all">
+<link rel="stylesheet" id="if-menu-site-css-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/if-menu-site.css" type="text/css" media="all">
+<link rel="stylesheet" id="parent-style-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="child-style-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/style(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="easy-social-share-buttons-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/easy-social-share-buttons.css" type="text/css" media="all">
+<link rel="stylesheet" id="essb-social-followers-counter-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/essb-followers-counter.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="mobile.nav.frontend.css-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mobile.nav.frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="bfa-font-awesome-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/font-awesome.min(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/style(3).css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="bellows-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/bellows.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery-migrate.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var MemberMouseGlobal = {"jsIsAdmin":"","adminUrl":"https:\/\/networklessons.com\/wp-admin\/","globalurl":"https:\/\/networklessons.com\/wp-content\/plugins\/membermouse","checkoutProcessingPaidMessage":"Please wait while we process your order...","checkoutProcessingFreeMessage":"Please wait while we create your account...","checkoutProcessingMessageCSS":"mm-checkout-processing-message","currencyInfo":{"currency":"USD","postfixIso":false,"name":"United States Dollar","int_curr_symbol":"&#85;&#83;&#68;&#32;","currency_symbol":"$","mon_decimal_point":".","mon_thousands_sep":",","mon_grouping":"3;3","positive_sign":"","negative_sign":"","int_frac_digits":"2","frac_digits":"2","p_cs_precedes":"1","p_sep_by_space":"0","n_cs_precedes":"1","n_sep_by_space":"0","p_sign_posn":"1","n_sign_posn":"1"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/global.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mm-common-core.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/core.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/widget.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/position.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/menu.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/wp-a11y.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var uiAutocompleteL10n = {"noResults":"No results found.","oneResult":"1 result found. Use up and down arrow keys to navigate.","manyResults":"%d results found. Use up and down arrow keys to navigate.","itemSelected":"Item selected."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/autocomplete.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var acs_config_suggest = {"ajax_url":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php","acs_suggest_selector":"input[name='s']","acs_suggest_trigger":"3","acs_suggest_results":"10","acs_suggest_click":"goto"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/cloud-search-suggest.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var dprv_js_bridge = {"record_IP":"No","site_url":"https:\/\/networklessons.com","ajax_url":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php","noRightClickMessage":"","attributeCaption":"Attributions - owner(s) of some content"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/copyright_proof_live.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/selectize.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mm-preview.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.c.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/wpfront-notification-bar.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var affwp_scripts = {"ajaxurl":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var affwp_debug_vars = {"integrations":{"membermouse":"MemberMouse"},"version":"2.1.6.1","currency":"USD"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/tracking.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/third-party.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/general.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.sidr.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/actionbox-helper.js"></script>
+<link rel="https://api.w.org/" href="https://networklessons.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://networklessons.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://networklessons.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.8.2">
+<link rel="shortlink" href="https://networklessons.com/?p=3667">
+<style id="bellows-custom-generated-css">
+
+/** Bellows Custom Tweaks (General Settings) **/
+/* More compact look of menu */
+.bellows .bellows-nav * { line-height: 1.75em; }
+.bellows .bellows-nav .bellows-submenu .bellows-target { padding-left: 20px;}
+.bellows .bellows-nav .bellows-target,
+.bellows .bellows-nav .bellows-submenu .bellows-target { padding: 2px;}
+
+/* Move toggle icons to left instead of right of text labels */
+.bellows .bellows-nav .bellows-subtoggle { width: 30px; left:0; }
+.bellows .bellows-nav .bellows-menu-item > .bellows-target > .bellows-target-text { margin-left: 30px; }
+.bellows .bellows-nav .bellows-subtoggle .fa { top: 40%; }
+
+/* Move toggle icons and lower level items to the right */
+.bellows .bellows-nav .bellows-submenu .bellows-item-level-1 .bellows-subtoggle { left: 25px; }
+.bellows .bellows-nav .bellows-submenu .bellows-item-level-1 .bellows-target { padding-left: 25px; }
+
+.bellows .bellows-nav .bellows-submenu .bellows-item-level-2 .bellows-subtoggle { left: 50px; }
+.bellows .bellows-nav .bellows-submenu .bellows-item-level-2 .bellows-target { padding-left: 50px; }
+
+
+/* SIDEBAR ONLY STYLING */
+
+/* Set all text to default black */
+#sidebar .bellows .bellows-nav a.bellows-target { color: #000000 }
+
+/* Set parent menu items bold and colored */
+#sidebar .bellows.bellows-main .bellows-nav .bellows-current-menu-item > .bellows-target,
+#sidebar .bellows.bellows-main .bellows-nav .bellows-current-menu-ancestor > .bellows-target { color:#557fae; font-weight: bold; }
+
+/* Set current post bold and colored */
+#sidebar .bellows .bellows-current-menu-item { font-weight: bold; color:#557fae; }
+
+/* Toggle icons on same height */
+#sidebar .bellows .bellows-nav .bellows-subtoggle .fa { top: 44%; }
+
+
+
+/* Status: Loaded from Transient */
+
+</style>	<style type="text/css">	.dprv{border-collapse:collapse;border-spacing:0px;border:0px;border-style:solid;padding:0px;}
+									.dprv tr td{border:0px;padding:0px;}
+			</style><style type="text/css" media="screen">/* To show 3 testimonials in slide show at sign up page */
+#content .easy_t_single_testimonial {
+    float: left;
+    width: 32% !important;
+    margin-left: 1%;
+    margin-right: 1%;
+    min-width: 290px; }
+.easy_t_single_testimonial:first-child { margin-left: 0 !important; }
+.easy_t_single_testimonial:last-child { margin-right: 0 !important; }
+.cycle-slide {
+height: auto;
+width: 100%;
+}
+
+/* Remove single quote before testimonials on home page */
+.home #main .style-modern_style-concept blockquote.easy_testimonial,
+.page-id-41097 #main .style-modern_style-concept blockquote.easy_testimonial {
+    quotes: none;
+}
+
+/* Remove single quote before testimonials on home page */
+.home #main .style-modern_style-concept .easy_testimonial_title,
+.page-id-41097 #main .style-modern_style-concept .easy_testimonial_title {
+    font-size: 160% !important;
+}
+
+/* Show about in code for rich text snippets but not for user in frontend */
+span.testimonial-other {
+    display:none !important;
+}
+
+	
+/* Set font style header to normal */
+cite { font-style: inherit !important; }
+
+/* Set font style content to theme font and italic */
+.testimonial_body p {
+    font-style: italic !important;
+    font-family: inherit !important; }
+
+/* Make title of testimonial larger */
+p.easy_testimonial_title {
+    font-style: italic !important;
+    font-family: inherit !important;
+    font-size: 120% !important;
+    margin-bottom: 0px !important;
+    font-weight: bolder !important; }
+div[class^='style-elegant_style-sky_blue'] p.easy_testimonial_title { text-align: center; }
+
+/* Change Business Blue plugin theme to Networklessons theme with white text */
+div[class^='style-elegant_style-sky_blue'] .testimonial_author { background-color: #5381b5 !important; }
+div[class^='style-elegant_style-sky_blue'] .testimonial_author .date { color: white !important; }
+div[class^='style-elegant_style-sky_blue'] .testimonial_author .testimonial-position { border-bottom-color: white !important; color: white !important; }
+div[class^='style-elegant_style-sky_blue'] .testimonial_body p::before { color: inherit !important; }
+div[class^='style-business_style-blue'] .testimonial_author { background-color: #5381b5 !important; }
+div[class^='style-business_style-blue'] .testimonial_author .date { color: white !important; }
+div[class^='style-business_style-blue'] .testimonial_author .testimonial-position { border-bottom-color: white !important; color: white !important; }</style><style type="text/css" media="screen">@media (max-width: 728px) {}</style><style type="text/css" media="screen">@media (max-width: 320px) {}</style>
+<style>
+.scroll-back-to-top-wrapper {
+    position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 99999999;
+    background-color: #777777;
+	color: #eeeeee;
+	width: 50px;
+	height: 48px;
+	line-height: 48px;
+	right: 10px;
+	bottom: 0px;
+	padding-top: 2px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.scroll-back-to-top-wrapper:hover {
+	background-color: #888888;
+  color: #eeeeee;
+}
+.scroll-back-to-top-wrapper.show {
+    visibility:visible;
+    cursor:pointer;
+	opacity: 1.0;
+}
+.scroll-back-to-top-wrapper i.fa {
+	line-height: inherit;
+}
+.scroll-back-to-top-wrapper .fa-lg {
+	vertical-align: 0;
+}
+</style>		<script type="text/javascript">
+		var AFFWP = AFFWP || {};
+		AFFWP.referral_var = 'affid';
+		AFFWP.expiration = 1;
+		AFFWP.debug = 0;
+
+		AFFWP.referral_credit_last = 0;
+		</script>
+<link rel="apple-touch-icon" sizes="180x180" href="https://networklessons.com/wp-content/uploads/fbrfg/apple-touch-icon.png?v=YAKJLBR288">
+<link rel="icon" type="image/png" sizes="32x32" href="https://networklessons.com/wp-content/uploads/fbrfg/favicon-32x32.png?v=YAKJLBR288">
+<link rel="icon" type="image/png" sizes="16x16" href="https://networklessons.com/wp-content/uploads/fbrfg/favicon-16x16.png?v=YAKJLBR288">
+<link rel="manifest" href="https://networklessons.com/wp-content/uploads/fbrfg/manifest.json?v=YAKJLBR288">
+<link rel="mask-icon" href="https://networklessons.com/wp-content/uploads/fbrfg/safari-pinned-tab.svg?v=YAKJLBR288" color="#5381b5">
+<link rel="shortcut icon" href="https://networklessons.com/wp-content/uploads/fbrfg/favicon.ico?v=YAKJLBR288">
+<meta name="msapplication-config" content="/wp-content/uploads/fbrfg/browserconfig.xml?v=YAKJLBR288">
+<meta name="theme-color" content="#5381b5">
+<!-- Theme version -->
+<meta name="generator" content="Definition Child 1">
+<meta name="generator" content="Definition 1.5.11">
+<meta name="generator" content="WooFramework 6.2.8">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale | Disable user zooming as the layout is optimised -->
+<meta content="user-scalable=no, width=device-width, maximum-scale=1, minimum-scale=1" name="viewport">
+<!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+		<style type="text/css">/* Prevent clear at top buttons for Table of Contents */ *[id^='essb_displayed_top_']{ clear: none !important; } /* Remove underline text decoration on hover in widget */ .widget_essbsocialfollowerscounterwidget ul li a:hover { text-decoration: none; }.essb_displayed_sidebar_right, .essb_displayed_sidebar { top: 252px !important;}</style>
+<script type="text/javascript">var essb_settings = {"ajax_url":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php","essb3_nonce":"25526e3299","essb3_plugin_url":"https:\/\/networklessons.com\/wp-content\/plugins\/easy-social-share-buttons3","essb3_facebook_total":true,"essb3_admin_ajax":false,"essb3_internal_counter":false,"essb3_counter_button_min":0,"essb3_counter_total_min":0,"essb3_no_counter_mailprint":false,"essb3_single_ajax":false,"ajax_type":"wp","twitter_counter":"self","google_counter":"","essb3_stats":true,"essb3_ga":true,"essb3_ga_mode":"simple","blog_url":"https:\/\/networklessons.com\/","essb3_postfloat_stay":false,"post_id":3667};</script><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://networklessons.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]-->		<style id="sdrn_css" type="text/css">
+			/* apply appearance settings */
+			#sdrn_bar {
+				background: #5381b5;
+			}
+			#sdrn_bar .menu_title, #sdrn_bar .sdrn_icon_menu {
+				color: #ffffff;
+			}
+			#sdrn_bar .sdrn_ic span {
+				background: #ffffff;
+			}
+			#sdrn_menu {
+				background: #5381b5!important;
+			}
+			#sdrn_menu.sdrn_levels ul li {
+				border-bottom:1px solid #ff0000;
+				border-top:1px solid #5381b5;
+			}
+			#sdrn_menu ul li a {
+				color: #ffffff;
+			}
+			#sdrn_menu ul li a:hover {
+				color: #385b83;
+			}
+			#sdrn_menu.sdrn_levels a.sdrn_parent_item {
+				border-left:1px solid #5381b5;
+			}
+			#sdrn_menu .sdrn_icon_par {
+				color: #ffffff;
+			}
+			#sdrn_menu .sdrn_icon_par:hover {
+				color: #385b83;
+			}
+			#sdrn_menu.sdrn_levels ul li ul {
+				border-top:1px solid #ff0000;
+			}
+
+			#sdrn_s {
+				color: #ffffff;
+				border:1px solid #ffffff;
+				background: #5381b5			}
+
+			#sdrn_searchsubmit {
+				color: #ffffff;
+			}
+
+			#sdrn_menu  .sdrn_searchsubmit_ic:before {
+				color: #ffffff;
+			}
+
+							#sdrn_menu, #sdrn_menu ul, #sdrn_menu li {
+					border-bottom:none!important;
+				}
+				#sdrn_menu.sdrn_levels > ul {
+					border-bottom:1px solid #5381b5!important;
+				}
+				.sdrn_no_border_bottom {
+					border-bottom:none!important;
+				}
+				#sdrn_menu.sdrn_levels ul li ul {
+					border-top:none!important;
+				}
+			
+							#sdrn_menu.left {
+					width:80%;
+					left: -80%;
+					right: auto;
+				}
+			
+							#sdrn_menu.right {
+					width:80%;
+					right: -80%;
+					left: auto;
+				}
+			
+			
+							#sdrn_bar .sdrn_ic {
+					float: right!important;
+					margin-right:0px!important;
+				}
+				#sdrn_bar .bar_logo {
+					pading-left: 0px;
+				}
+			
+										/* show the bar and hide othere navigation elements */
+				@media only screen and (max-width: 450px) {
+					 html { padding-top: 42px!important; } 										#sdrn_bar { display: block!important; }
+					#header { display:none!important; }				}
+				/* hide the bar & the menu */
+				@media only screen and (min-width: 451px) {
+				}
+			
+			
+			
+			
+
+			
+
+				#sdrn_menu .sdrn_icon_par.fa-envelope-o:before { content: "\f003"; } #sdrn_menu .sdrn_par_opened.fa-envelope-o:before { content: "\f003"!important; } #sdrn_menu .sdrn_item_custom_icon.fa-envelope-o:before { content: "\f003"!important; } #sdrn_menu .sdrn_icon_par.fa-home:before { content: "\f015"; } #sdrn_menu .sdrn_par_opened.fa-home:before { content: "\f015"!important; } #sdrn_menu .sdrn_item_custom_icon.fa-home:before { content: "\f015"!important; } 
+		</style>
+		<style type="text/css">
+/*  Tabby Responsive Tabs: cubecolour.co.uk/tabby-responsive-tabs-customiser */
+.responsive-tabs .responsive-tabs__heading {display: none;}.responsive-tabs .responsive-tabs__list__item {display: inline;cursor: pointer;}.responsive-tabs-wrapper {clear: both;margin-bottom: 20px;zoom: 1;}.responsive-tabs-wrapper:before,.responsive-tabs-wrapper:after {content: "";display: table;}.responsive-tabs-wrapper:after {clear: both;}.responsive-tabs .responsive-tabs__heading:focus,.responsive-tabs .responsive-tabs__list__item:focus {outline: 1px solid transparent;}.responsive-tabs .responsive-tabs__heading--active:focus,.responsive-tabs .responsive-tabs__list__item--active:focus {outline: none;}.responsive-tabs ul.responsive-tabs__list {font-size: 18px;line-height: 18px;margin: 20px 0 0 12px;padding: 0;}.responsive-tabs .responsive-tabs__list__item {background: transparent;border: 1px solid transparent;border-bottom: none;-webkit-border-top-left-radius: 3px;-webkit-border-top-right-radius: 3px;-moz-border-radius-topleft: 3px;-moz-border-radius-topright: 3px;border-top-left-radius: 3px;border-top-right-radius: 3px;color: #999999;font-size: 18px;line-height: 19px;text-transform: inherit;margin: 1px 12px 0 0;padding: 10px 12px 10px;white-space: nowrap;float: left;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}.responsive-tabs .responsive-tabs__list__item .fa {margin-right: 8px;line-height: 0.8;}.responsive-tabs .responsive-tabs__list__item:hover {color: #333333;background: transparent;}.responsive-tabs .responsive-tabs__list__item--active, .responsive-tabs .responsive-tabs__list__item--active:hover {background: #ffffff;border-color: #dddddd;color: #666666;padding-bottom: 11px;margin-top: 0;position: relative;top: 1px;}.responsive-tabs .responsive-tabs__panel {background: #ffffff;border: 1px solid #dddddd;border-top: 1px solid #dddddd;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;-webkit-border-top-left-radius: 0px;-moz-border-radius-topleft: 0px;border-top-left-radius: 0px;clear: left;margin-bottom: 0;padding: 20px 20px 0;word-wrap: break-word;}.responsive-tabs .responsive-tabs__panel:after { content: "";display: block; height: 0; clear: both;}.responsive-tabs__list .fa {display:none;}@media (min-width: 732px) {.responsive-tabs .responsive-tabs__panel--closed-accordion-only {display: block;}}@media (max-width: 731px) {.responsive-tabs .responsive-tabs__list {display: none;}.responsive-tabs .responsive-tabs__heading {display: block;cursor: pointer;}.responsive-tabs-wrapper {border-top: 1px solid #cccccc;}.responsive-tabs .responsive-tabs__heading {background: #ffffff;border: 1px solid #cccccc;border-top: none;color: #777777;font-size: 18px;font-weight: normal;text-transform: inherit;margin: 0;padding: 10px 0;padding-left: 20px;position: relative;}.responsive-tabs .responsive-tabs__heading .fa {margin-right: 8px;display:none;}.responsive-tabs .responsive-tabs__heading:after {border-left: 6px solid transparent;border-right: 6px solid transparent;border-top: 6px solid #777777;content:"";display: block;position: absolute;right: 20px;top: 20px;height: 0; width: 0; }.responsive-tabs .responsive-tabs__heading:hover {background: #eeeeee;color: #777777;}.responsive-tabs .responsive-tabs__heading:hover:after {border-top: 6px solid #777777;}.responsive-tabs .responsive-tabs__heading--active,.responsive-tabs .responsive-tabs__heading--active:hover {background: #cccccc;color: #ffffff;}.responsive-tabs .responsive-tabs__heading--active:after,.responsive-tabs .responsive-tabs__heading--active:hover:after {border-bottom: 6px solid #ffffff;border-top: 0;top: 18px;}.responsive-tabs .responsive-tabs__panel {background: #ffffff;border: 1px solid #cccccc;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;border-top: none;margin: 0;padding: 0 20px;padding-top: 20px;}}</style><noscript>&lt;style type="text/css"&gt; .wpb_animate_when_almost_visible { opacity: 1; }&lt;/style&gt;</noscript>
+<!-- Google Webfonts -->
+<link href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/css" rel="stylesheet" type="text/css">
+
+<!-- Woo Custom Typography -->
+<style type="text/css">
+body { font:normal 1.5em/1.5em 'Open Sans', arial, sans-serif;color:#000000; }
+.nav a { font:normal 1em/1.4em 'Open Sans', arial, sans-serif;color:#ffffff; }
+.page header h1 { font:normal 2em/1em 'Titillium Web', arial, sans-serif;color:#000000; }
+.post header h1 { font:normal 2.5em/1em 'Titillium Web', arial, sans-serif;color:#000000; }
+.post header h1 a:link, .post header h1 a:visited { font:normal 1em/1em 'Titillium Web', arial, sans-serif;color:#000000; }
+.post-meta { font:normal 1em/1em 'Open Sans', arial, sans-serif;color:#000000; }
+.entry, .entry p { font:normal 1em/1.5em 'Open Sans', arial, sans-serif;color:#000000; } h1, h2, h3, h4, h5, h6 { font-family: Titillium Web, arial, sans-serif; }
+.widget h3, .home #content #sidebar .widget h3 { font:normal 1.3em/1em 'Titillium Web', arial, sans-serif;color:#000000; }
+</style>
+
+<!-- Alt Stylesheet -->
+<link href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/default.css" rel="stylesheet" type="text/css">
+<!-- Options Panel Custom CSS -->
+<style type="text/css">
+/* Do NOT use this field. Use stylesheet in child directory instead */
+</style>
+
+
+<!-- Woo Shortcodes CSS -->
+<link href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/shortcodes.css" rel="stylesheet" type="text/css">
+
+<!-- Custom Stylesheet -->
+<link href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body class="post-template-default single single-post postid-3667 single-format-standard unknown alt-style-default layout-left-content wpb-js-composer js-comp-ver-5.3 vc_responsive sdrn_jquery sdrn_right sdrn_open_sans_no"><div id="wpfront-notification-bar-spacer" style="display: block; top: 0px; height: 67px;">
+    <div id="wpfront-notification-bar-open-button" class="top wpfront-bottom-shadow" style="top: 0px; position: fixed; display: none;"></div>
+    <div id="wpfront-notification-bar" class="wpfront-fixed " style="top: 0px; height: auto; position: fixed; visibility: visible;">
+                <table border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td>
+                    <div class="wpfront-message">
+                        Get Full Access to our 581 Cisco Lessons Now
+                    </div>
+                    <div>
+                                                                                    <a class="wpfront-button" href="https://networklessons.com/sign-up" target="_self">Start $1 Trial</a>
+                                                                                                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+
+<div id="wrapper">
+
+    
+	<header id="header">
+		<div class="col-full">
+
+			
+	<a id="logo" href="https://networklessons.com/" title="">
+		<img src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/networklessons-logo-flattened.png" alt="NetworkLessons.com">
+	</a>
+
+	    	<hgroup>
+				<span class="nav-toggle"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#navigation"><span>Navigation</span></a></span>
+				<h1 class="site-title"><a href="https://networklessons.com/">NetworkLessons.com</a></h1>
+				<h2 class="site-description"></h2>
+			</hgroup>
+
+        	<div class="search_main fix"><form role="search" class="searchform" method="get" id="searchform" action="https://networklessons.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" class="field s ui-autocomplete-input" placeholder="Search..." id="s" autocomplete="off">
+					<input type="submit" class="search-submit" id="searchsubmit" value="Search">
+				</div>
+			</form></div>
+			<nav id="navigation" class="col-full" role="navigation">
+
+				<ul id="main-nav" class="nav fl"><li id="menu-item-10143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-10143 parent"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#">Courses</a>
+<ul class="sub-menu">
+	<li id="menu-item-20088" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-20088 parent"><a href="https://networklessons.com/cisco/">Cisco</a>
+	<ul class="sub-menu">
+		<li id="menu-item-33774" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-33774"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/">CCNA R&amp;S ICND1 100-105</a></li>
+		<li id="menu-item-40575" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-40575"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd2-200-105/">CCNA R&amp;S ICND2 200-105</a></li>
+		<li id="menu-item-20090" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20090"><a href="https://networklessons.com/cisco/ccnp-route/">CCNP ROUTE</a></li>
+		<li id="menu-item-20092" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20092"><a href="https://networklessons.com/cisco/ccnp-switch/">CCNP SWITCH</a></li>
+		<li id="menu-item-20093" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20093"><a href="https://networklessons.com/cisco/ccnp-tshoot/">CCNP TSHOOT</a></li>
+		<li id="menu-item-20089" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20089"><a href="https://networklessons.com/cisco/ccie-routing-switching/">CCIE R&amp;S</a></li>
+		<li id="menu-item-38428" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-38428"><a href="https://networklessons.com/cisco/ccie-routing-switching-written/">CCIE R&amp;S Written</a></li>
+		<li id="menu-item-37686" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37686"><a href="https://networklessons.com/cisco/asa-firewall/">ASA Firewall</a></li>
+	</ul>
+</li>
+	<li id="menu-item-7155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7155 parent"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#">Routing &amp; Switching</a>
+	<ul class="sub-menu">
+		<li id="menu-item-20100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20100"><a href="https://networklessons.com/subnetting/">Subnetting</a></li>
+		<li id="menu-item-226" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-226"><a href="https://networklessons.com/switching/">Switching</a></li>
+		<li id="menu-item-225" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-225"><a href="https://networklessons.com/spanning-tree/">Spanning-Tree</a></li>
+		<li id="menu-item-1656" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1656"><a href="https://networklessons.com/frame-relay/">Frame-Relay</a></li>
+		<li id="menu-item-1665" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1665"><a href="https://networklessons.com/rip/">RIP</a></li>
+		<li id="menu-item-20102" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20102"><a href="https://networklessons.com/eigrp/">EIGRP</a></li>
+		<li id="menu-item-20105" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20105"><a href="https://networklessons.com/ospf/">OSPF</a></li>
+		<li id="menu-item-20101" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20101"><a href="https://networklessons.com/bgp/">BGP</a></li>
+		<li id="menu-item-1660" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1660"><a href="https://networklessons.com/multicast/">Multicast</a></li>
+		<li id="menu-item-20103" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20103"><a href="https://networklessons.com/ipv6/">IPv6</a></li>
+		<li id="menu-item-1664" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1664"><a href="https://networklessons.com/quality-of-service/">Quality of Service</a></li>
+		<li id="menu-item-20104" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20104"><a href="https://networklessons.com/mpls/">MPLS</a></li>
+	</ul>
+</li>
+	<li id="menu-item-8339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8339"><a href="https://networklessons.com/new-lessons/"><i class="fa fa-plus"></i> New Lessons</a></li>
+	<li id="menu-item-7347" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7347"><a href="https://networklessons.com/member-ideas/"><i class="fa fa-lightbulb-o"></i> Lesson Ideas</a></li>
+</ul>
+</li>
+<li id="menu-item-8715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8715"><a href="https://forum.networklessons.com/">Forum</a></li>
+<li id="menu-item-23483" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23483"><a href="https://networklessons.com/support/">Support</a></li>
+<li id="menu-item-20510" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20510"><a href="https://networklessons.com/login/">Log In</a></li>
+</ul>	    	    
+			</nav><!-- /#navigation -->
+
+			
+		</div><!-- /.col-full -->
+	</header><!-- /#header -->
+
+	       
+    <div id="content" class="col-full">
+    
+			
+<aside id="sidebar" class="col-right">
+
+	
+	    <div class="primary">
+		<div id="text-5" class="widget widget_text">			<div class="textwidget"><div class="urlspecificmenu">
+					<h2>Table of Contents</h2><p>CCNA Routing &amp; Switching ICND1 100-105</p><nav id="bellows-main-699" class="bellows bellows-main bellows-source-menu bellows-align-full bellows-skin-none"><ul id="menu-ccna-routing-switching-icnd1-100-105" class="bellows-nav" data-bellows-config="main"><li id="menu-item-33658" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-33658 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">1.0 Introduction</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-40223" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-40223 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/what-is-networking/" class="bellows-target"><span class="bellows-target-title bellows-target-text">What is Networking</span></a></li>
+	<li id="menu-item-33659" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33659 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-study-cisco-and-networking/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to study (Cisco) Networking</span></a></li>
+	<li id="menu-item-33660" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33660 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-use-mindmapping/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to use Mindmapping</span></a></li>
+	<li id="menu-item-33662" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33662 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/recommended-lab-equipment-for-cisco-ccna/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Building a CCNA Lab</span></a></li>
+</ul>
+</li>
+<li id="menu-item-29520" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-29520 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">2.0 Network Fundamentals</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-33558" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33558 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-the-osi-model/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to the OSI Model</span></a></li>
+	<li id="menu-item-33560" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33560 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/tcpip-stack-tutorial/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to the TCP/IP Stack Model</span></a></li>
+	<li id="menu-item-33566" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33566 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/internet-protocol/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Internet Protocol version 4 (IPv4)</span></a></li>
+	<li id="menu-item-33567" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33567 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv4-packet-header/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv4 Packet Header</span></a></li>
+	<li id="menu-item-33729" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33729 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/arp-address-resolution-protocol-explained/" class="bellows-target"><span class="bellows-target-title bellows-target-text">ARP (Address Resolution Protocol)</span></a></li>
+	<li id="menu-item-33568" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33568 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-tcp-and-udp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to TCP and UDP</span></a></li>
+	<li id="menu-item-33569" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33569 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/tcp-header/" class="bellows-target"><span class="bellows-target-title bellows-target-text">TCP Header</span></a></li>
+	<li id="menu-item-33570" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33570 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/tcp-window-size-scaling/" class="bellows-target"><span class="bellows-target-title bellows-target-text">TCP Window Scaling</span></a></li>
+	<li id="menu-item-33609" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33609 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-dns/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to DNS</span></a></li>
+	<li id="menu-item-33574" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33574 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshoot-networks/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to troubleshoot Networks</span></a></li>
+	<li id="menu-item-34836" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-34836 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-cisco-ios-cli-command-line-interface/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Cisco IOS CLI (Command Line Interface)</span></a></li>
+	<li id="menu-item-34918" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-34918 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/user-mode-and-privileged-mode-security/" class="bellows-target"><span class="bellows-target-title bellows-target-text">User mode and Privileged Mode Security</span></a></li>
+</ul>
+</li>
+<li id="menu-item-30400" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30400 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">3.0 LAN Switching Fundamentals</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-34374" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-34374 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-lans/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to LANs</span></a></li>
+	<li id="menu-item-33579" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33579 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-ethernet/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Ethernet</span></a></li>
+	<li id="menu-item-35370" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-35370 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/collision-domains/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Collision Domain</span></a></li>
+	<li id="menu-item-35398" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-35398 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/broadcast-domain/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Broadcast Domain</span></a></li>
+	<li id="menu-item-33577" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33577 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-does-a-switch-learn-mac-addresses/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How does a switch learn MAC addresses</span></a></li>
+	<li id="menu-item-33572" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33572 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-campus-network-design-basics/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco Campus Network Design Basics</span></a></li>
+	<li id="menu-item-36927" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-36927 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/network-topologies/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Network Topologies</span></a></li>
+	<li id="menu-item-37033" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-37033 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-wireless-lan/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Wireless LAN</span></a></li>
+	<li id="menu-item-33588" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33588 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-port-security-on-cisco-switch/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to configure Port-Security</span></a></li>
+	<li id="menu-item-33665" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-33665 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">VLANs and Trunking</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-33591" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33591 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-vlans/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to VLANs</span></a></li>
+		<li id="menu-item-33592" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33592 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-vlans-on-cisco-catalyst-switch/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to configure VLANs</span></a></li>
+		<li id="menu-item-33598" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33598 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/802-1q-encapsulation-explained/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to 802.1Q</span></a></li>
+		<li id="menu-item-33599" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33599 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-trunk-on-cisco-catalyst-switch/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to configure Trunks</span></a></li>
+		<li id="menu-item-37074" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-37074 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/voice-vlan/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Voice VLAN</span></a></li>
+		<li id="menu-item-33600" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33600 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/802-1q-native-vlan-cisco-ios-switch/" class="bellows-target"><span class="bellows-target-title bellows-target-text">802.1Q Native VLAN</span></a></li>
+		<li id="menu-item-33601" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33601 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-vtp-vlan-trunking-protocol/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to VTP (VLAN Trunking Protocol)</span></a></li>
+		<li id="menu-item-33602" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33602 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-dtp-dynamic-trunking-protocol-negotiation/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco DTP (Dynamic Trunking Protocol)</span></a></li>
+		<li id="menu-item-33581" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33581 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-interfaces/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting Interfaces</span></a></li>
+		<li id="menu-item-33740" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33740 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-vlans-trunks/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting VLANs and Trunks</span></a></li>
+	</ul>
+</li>
+	<li id="menu-item-33666" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-33666 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">Spanning-Tree</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-33668" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33668 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-spanning-tree/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Spanning-Tree</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-30428" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-current-menu-ancestor bellows-current-menu-parent bellows-menu-item-has-children bellows-menu-item-30428 bellows-item-level-0 bellows-active"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">4.0 IPv4 Routing Fundamentals</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu" style="display: block;">
+	<li id="menu-item-36789" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-current-menu-item bellows-menu-item-36789 bellows-item-level-1 bellows-current-menu-item"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco IOS Router Basic Configuration</span></a></li>
+	<li id="menu-item-33604" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33604 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-routers-and-routing/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Routers and Routing</span></a></li>
+	<li id="menu-item-39470" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39470 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-wans-wide-area-network/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to WAN (Wide Area Network)</span></a></li>
+	<li id="menu-item-33688" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-33688 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">Subnetting</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-38666" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38666 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/what-is-subnetting/" class="bellows-target"><span class="bellows-target-title bellows-target-text">What is Subnetting?</span></a></li>
+		<li id="menu-item-33672" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33672 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/basics-of-binary-numbers/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Basics of Binary Numbers</span></a></li>
+		<li id="menu-item-33673" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33673 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/subnetting-in-binary/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Subnetting in Binary</span></a></li>
+		<li id="menu-item-33674" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33674 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/subnetting-in-decimal-fast-way/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Subnetting in Decimal (Fast)</span></a></li>
+		<li id="menu-item-33675" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33675 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/classless-interdomain-routing-cidr/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Classless InterDomain Routing (CIDR)</span></a></li>
+		<li id="menu-item-33684" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33684 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/variable-length-subnet-mask-vlsm/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Variable Length Subnet Mask (VLSM)</span></a></li>
+		<li id="menu-item-33685" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33685 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/route-summarization/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Route Summarization</span></a></li>
+		<li id="menu-item-33686" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33686 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/hexadecimal-decimal-binary/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Hexadecimal Calculations</span></a></li>
+		<li id="menu-item-33687" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33687 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/create-a-subnetting-cheat-sheet/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Create a Subnetting Cheat Sheet</span></a></li>
+	</ul>
+</li>
+	<li id="menu-item-33734" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33734 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/what-is-a-default-gateway/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Default Gateway</span></a></li>
+	<li id="menu-item-33691" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33691 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-static-route-on-cisco-ios-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Static Routing</span></a></li>
+	<li id="menu-item-39821" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39821 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ip-routing-explained/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IP Routing Explained</span></a></li>
+	<li id="menu-item-33607" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33607 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-router-on-a-stick/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to configure Router on a Stick</span></a></li>
+	<li id="menu-item-33736" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33736 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/intervlan-routing/" class="bellows-target"><span class="bellows-target-title bellows-target-text">InterVLAN Routing</span></a></li>
+	<li id="menu-item-33693" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33693 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/rip-distance-vector-routing-protocol/" class="bellows-target"><span class="bellows-target-title bellows-target-text">RIP (Routing Information Protocol)</span></a></li>
+	<li id="menu-item-33767" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33767 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-rip-on-a-cisco-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">RIP Configuration</span></a></li>
+	<li id="menu-item-38687" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38687 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/rip-passive-interface/" class="bellows-target"><span class="bellows-target-title bellows-target-text">RIP Passive Interface</span></a></li>
+	<li id="menu-item-38765" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38765 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/rip-maximum-paths/" class="bellows-target"><span class="bellows-target-title bellows-target-text">RIP Maximum Paths</span></a></li>
+	<li id="menu-item-38778" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38778 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/rip-default-route/" class="bellows-target"><span class="bellows-target-title bellows-target-text">RIP Default Route</span></a></li>
+	<li id="menu-item-33769" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33769 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-rip/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting RIP</span></a></li>
+	<li id="menu-item-33697" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33697 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/administrative-distance-for-ccna-students/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Administrative Distance</span></a></li>
+	<li id="menu-item-38677" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38677 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/floating-static-route/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Floating Static Route</span></a></li>
+	<li id="menu-item-33698" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33698 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/classful-vs-classless-routing-protocols/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Classful vs Classless Routing Protocols</span></a></li>
+	<li id="menu-item-33699" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33699 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-route-summarization/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Route Summarization</span></a></li>
+</ul>
+</li>
+<li id="menu-item-33700" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-33700 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">5.0 IPv6</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-33713" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33713 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-ipv6/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to IPv6</span></a></li>
+	<li id="menu-item-33714" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33714 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/shortening-ipv6-addresses/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Shortening IPv6 addresses</span></a></li>
+	<li id="menu-item-33715" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33715 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-find-ipv6-prefix/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to find the IPv6 prefix</span></a></li>
+	<li id="menu-item-33716" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33716 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-address-types/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Address Types</span></a></li>
+	<li id="menu-item-33717" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33717 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-address-assignment-example/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Address Assignment Example</span></a></li>
+	<li id="menu-item-33718" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33718 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-eui-64-explained/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 EUI-64</span></a></li>
+	<li id="menu-item-33719" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33719 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-summarization-example/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Summarization Example</span></a></li>
+	<li id="menu-item-33720" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33720 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-solicited-node-multicast-address/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Solicited Node Multicast Address</span></a></li>
+	<li id="menu-item-33721" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33721 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv6-neighbor-discovery-protocol-on-cisco-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Neighbor Discovery Protocol (NDP)</span></a></li>
+	<li id="menu-item-33722" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33722 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/stateless-autoconfiguration-for-ipv6/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Stateless Autoconfiguration</span></a></li>
+	<li id="menu-item-33723" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33723 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-dhcpv6-server-configuration/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 DHCP Server</span></a></li>
+	<li id="menu-item-33724" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33724 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-ipv6-static-route/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv6 Static Routing</span></a></li>
+</ul>
+</li>
+<li id="menu-item-30452" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30452 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">6.0 Network Services</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-30455" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30455 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">DHCP</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-33614" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33614 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-dhcp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to DHCP</span></a></li>
+		<li id="menu-item-33616" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33616 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-dhcp-server-on-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">DHCP Server</span></a></li>
+		<li id="menu-item-33617" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33617 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-dhcp-relay-agent/" class="bellows-target"><span class="bellows-target-title bellows-target-text">DHCP Relay Agent</span></a></li>
+		<li id="menu-item-33615" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33615 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/dhcp-client-on-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">DHCP Client</span></a></li>
+		<li id="menu-item-33619" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33619 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-dhcp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting DHCP</span></a></li>
+	</ul>
+</li>
+	<li id="menu-item-30463" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30463 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">NAT (Network Address Translation)</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-33639" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33639 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-nat-and-pat/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to NAT and PAT</span></a></li>
+		<li id="menu-item-33640" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33640 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-static-nat-on-cisco-ios-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Static NAT</span></a></li>
+		<li id="menu-item-33641" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33641 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-dynamic-nat-on-cisco-ios-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Dynamic NAT</span></a></li>
+		<li id="menu-item-33642" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33642 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-pat-on-cisco-ios-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">PAT (Port Address Translation)</span></a></li>
+		<li id="menu-item-33771" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33771 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-nat-pat/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting NAT/PAT</span></a></li>
+	</ul>
+</li>
+	<li id="menu-item-30462" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30462 bellows-item-level-1"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">Access-Lists</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+	<ul class="bellows-submenu">
+		<li id="menu-item-33630" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33630 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-access-lists-on-cisco-ios-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Access-Lists</span></a></li>
+		<li id="menu-item-33631" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33631 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/wildcard-bits-explained/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Wildcard Bits Explained</span></a></li>
+		<li id="menu-item-33632" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33632 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/standard-access-list-example-on-cisco-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Standard Access-List</span></a></li>
+		<li id="menu-item-33633" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33633 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/extended-access-list-example-on-cisco-router/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Extended Access-List</span></a></li>
+		<li id="menu-item-33634" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33634 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-time-based-access-list/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Time Based Access-List</span></a></li>
+		<li id="menu-item-38826" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-38826 bellows-item-level-2"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-firewalls/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Firewalls</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-30467" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-has-children bellows-menu-item-30467 bellows-item-level-0"><span class="bellows-target"><span class="bellows-target-title bellows-target-text">7.0 Network Management</span><span class="bellows-subtoggle"><i class="bellows-subtoggle-icon-expand fa fa-plus-square"></i><i class="bellows-subtoggle-icon-collapse fa fa-minus-square"></i></span></span>
+<ul class="bellows-submenu">
+	<li id="menu-item-33645" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33645 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-syslog-messages/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Syslog</span></a></li>
+	<li id="menu-item-33622" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33622 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-network-time-protocol-ntp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to NTP</span></a></li>
+	<li id="menu-item-33623" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33623 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/troubleshooting-ntp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Troubleshooting NTP</span></a></li>
+	<li id="menu-item-33585" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33585 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-cdp-cisco-discovery-protocol/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to CDP (Cisco Discovery Protocol)</span></a></li>
+	<li id="menu-item-33586" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33586 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/link-layer-discovery-protocol-lldp/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Introduction to Link Layer Discovery Protocol (LLDP)</span></a></li>
+	<li id="menu-item-34930" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-34930 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ipv4-address-configuration-on-cisco-ios-catalyst-switch/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IPv4 Address Configuration on Cisco Catalyst IOS Switch</span></a></li>
+	<li id="menu-item-33654" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33654 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-telnet-server-client/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Telnet Server and Client</span></a></li>
+	<li id="menu-item-33653" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33653 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/configure-ssh-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">SSH Server and Client</span></a></li>
+	<li id="menu-item-39626" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39626 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ping-troubleshooting-on-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Ping Troubleshooting</span></a></li>
+	<li id="menu-item-39248" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39248 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/traceroute/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Traceroute</span></a></li>
+	<li id="menu-item-33652" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33652 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/how-to-configure-cisco-ios-banners/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Login Banner</span></a></li>
+	<li id="menu-item-39126" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39126 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/configuration-register-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Configuration Register</span></a></li>
+	<li id="menu-item-33651" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33651 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-password-recovery/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco IOS Password Recovery</span></a></li>
+	<li id="menu-item-39659" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39659 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-filesystem/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco IOS Filesystem</span></a></li>
+	<li id="menu-item-39714" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39714 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/copy-to-running-configuration/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Copy to Running Configuration</span></a></li>
+	<li id="menu-item-39668" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-39668 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/configuration-archive-rollback-cisco-ios/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Configuration Archive and Rollback</span></a></li>
+	<li id="menu-item-34568" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-34568 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/upgrade-cisco-ios-image/" class="bellows-target"><span class="bellows-target-title bellows-target-text">How to upgrade Cisco IOS Image</span></a></li>
+	<li id="menu-item-40280" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-40280 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-boot-system-image/" class="bellows-target"><span class="bellows-target-title bellows-target-text">Cisco IOS Boot System Image</span></a></li>
+	<li id="menu-item-33646" class="bellows-menu-item bellows-menu-item-type-custom bellows-menu-item-object-custom bellows-menu-item-33646 bellows-item-level-1"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/ios-licensing/" class="bellows-target"><span class="bellows-target-title bellows-target-text">IOS Licensing</span></a></li>
+</ul>
+</li>
+</ul></nav></div>
+		</div>		           
+	</div>        
+	   
+	
+	 
+	
+</div></aside><!-- /#sidebar -->
+    	    	
+		<section id="main" class="col-left">
+		           
+        			<article class="post-3667 post type-post status-publish format-standard has-post-thumbnail hentry category-ccna-routing-switching-icnd1-100-105 tag-router">
+
+				                
+                <header>
+				
+					<div class="breadcrumbs">You are here:
+				<span xmlns:v="http://rdf.data-vocabulary.org/#">
+					<span typeof="v:Breadcrumb">
+					<a href="https://networklessons.com/" rel="v:url" property="v:title">Home</a> » <span rel="v:child" typeof="v:Breadcrumb"><a href="https://networklessons.com/cisco/" rel="v:url" property="v:title">Cisco</a> » <span rel="v:child" typeof="v:Breadcrumb"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/" rel="v:url" property="v:title">CCNA Routing &amp; Switching ICND1 100-105</a></span></span></span></span></div>					
+										<h1>Cisco IOS Router Basic Configuration</h1>
+                	<aside class="post-meta">
+	<ul>
+		<li class="post-date">
+			<span class="small">Posted on</span>
+			<span>January 22, 2014</span>
+		</li>
+		<li class="post-author">
+			<span class="small">by</span>
+			<a href="https://networklessons.com/author/renemolenaar/" title="Posts by Rene Molenaar" rel="author">Rene Molenaar</a>		</li>
+		<li class="post-category">
+			<span class="small">in</span>
+			<a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/" rel="category tag">CCNA Routing &amp; Switching ICND1 100-105</a>		</li>
+			</ul>
+</aside>
+					
+                </header>
+						
+								
+                <section class="entry fix">
+					<div class="essb_links essb_counter_modern_right essb_displayed_top essb_share essb_template_grey-blocks-retina essb_177346770 print-no" id="essb_displayed_top_177346770" data-essb-postid="3667" data-essb-position="top" data-essb-button-style="icon" data-essb-template="grey-blocks-retina" data-essb-counter-pos="right" data-essb-url="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?" data-essb-twitter-url="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=twitter%26utm_medium=social%26utm_campaign=share-" data-essb-instance="177346770"><ul class="essb_links_list essb_force_hide_name essb_force_hide"><li class="essb_item essb_link_facebook nolightbox"> <a href="https://www.facebook.com/sharer/sharer.php?u=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=facebook%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;t=Cisco+IOS+Router+Basic+Configuration&amp;redirect_uri=https://networklessons.com?sharing-thankyou=yes" title="" onclick="essb.window(&#39;https://www.facebook.com/sharer/sharer.php?u=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=facebook%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;t=Cisco+IOS+Router+Basic+Configuration&amp;redirect_uri=https://networklessons.com?sharing-thankyou=yes&#39;,&#39;facebook&#39;,&#39;177346770&#39;); return false;" target="_blank" rel="nofollow"><span class="essb_icon essb_icon_facebook"></span><span class="essb_network_name essb_noname"></span></a></li><li class="essb_item essb_link_twitter nolightbox"> <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#" title="" onclick="essb.window(&#39;https://twitter.com/intent/tweet?text=Cisco+IOS+Router+Basic+Configuration%20https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=twitter%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;url=&amp;counturl=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=twitter%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;related=NetworkLessons&amp;via=NetworkLessons&#39;,&#39;twitter&#39;,&#39;177346770&#39;); return false;" target="_blank" rel="nofollow"><span class="essb_icon essb_icon_twitter"></span><span class="essb_network_name essb_noname"></span></a></li><li class="essb_item essb_link_linkedin nolightbox"> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=Cisco+IOS+Router+Basic+Configuration&amp;url=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=linkedin%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration" title="" onclick="essb.window(&#39;https://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=EasySocialShareButtons&amp;title=Cisco+IOS+Router+Basic+Configuration&amp;url=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=linkedin%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&#39;,&#39;linkedin&#39;,&#39;177346770&#39;); return false;" target="_blank" rel="nofollow"><span class="essb_icon essb_icon_linkedin"></span><span class="essb_network_name essb_noname"></span></a></li><li class="essb_item essb_link_reddit nolightbox"> <a href="http://reddit.com/submit?url=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=reddit%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;title=Cisco+IOS+Router+Basic+Configuration" title="" onclick="essb.window(&#39;http://reddit.com/submit?url=https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/?utm_source=reddit%26utm_medium=social%26utm_campaign=share-Cisco+IOS+Router+Basic+Configuration&amp;title=Cisco+IOS+Router+Basic+Configuration&#39;,&#39;reddit&#39;,&#39;177346770&#39;); return false;" target="_blank" rel="nofollow"><span class="essb_icon essb_icon_reddit"></span><span class="essb_network_name essb_noname"></span></a></li><li class="essb_item essb_link_mail nolightbox"> <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#" title="" onclick="essb_open_mailform(&#39;177346770&#39;); return false;" target="_blank" rel="nofollow"><span class="essb_icon essb_icon_mail"></span><span class="essb_network_name essb_noname"></span></a></li></ul></div><p>In this lesson, you will learn how to create a basic configuration for a Cisco IOS router.&nbsp;If you are completely new to the Cisco CLI, you might want to look at our<a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-cisco-ios-cli-command-line-interface/">&nbsp;Introduction to Cisco IOS CLI lesson</a> first.</p>
+<h2>Integrated Services Routers</h2>
+<p>Most networking vendors, including Cisco have different router models. Cisco offers routers for&nbsp;small branch offices with only a few users, up to very large routers that are used in data centers.</p>
+<p>If you are new to networking, you will probably start with some of the smaller routers. Cisco has the <em>integrated services routers</em> which are routers but these devices also offer some other services like wireless or Voice over IP.</p>
+<p>Here’s a picture of the 1800, 2800 and 3800 series Cisco routers:</p>
+<p><img class="alignnone size-full wp-image-39892" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/cisco-integrated-services-routers.jpg" alt="cisco integrated services routers" width="3000" height="1338" srcset="https://networklessons.com/wp-content/uploads/2014/01/cisco-integrated-services-routers.jpg 3000w, https://networklessons.com/wp-content/uploads/2014/01/cisco-integrated-services-routers-300x134.jpg 300w, https://networklessons.com/wp-content/uploads/2014/01/cisco-integrated-services-routers-768x343.jpg 768w, https://networklessons.com/wp-content/uploads/2014/01/cisco-integrated-services-routers-1024x457.jpg 1024w" sizes="(max-width: 3000px) 100vw, 3000px"></p>
+<p>These routers are not the newest models but are still very popular and used often in home labs. Here’s a closer look of one of the 2800 series routers:</p>
+<p><img class="alignnone size-full wp-image-39894" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/cisco-isr-router-2800-back.png" alt="cisco isr router 2800 back" width="1500" height="270" srcset="https://networklessons.com/wp-content/uploads/2014/01/cisco-isr-router-2800-back.png 1500w, https://networklessons.com/wp-content/uploads/2014/01/cisco-isr-router-2800-back-300x54.png 300w, https://networklessons.com/wp-content/uploads/2014/01/cisco-isr-router-2800-back-768x138.png 768w, https://networklessons.com/wp-content/uploads/2014/01/cisco-isr-router-2800-back-1024x184.png 1024w" sizes="(max-width: 1500px) 100vw, 1500px"></p>
+<p>Above you can see:</p>
+<ul>
+<li>1x USB port.</li>
+<li>2x FastEthernet interfaces.</li>
+<li>1x console port.</li>
+<li>1x AUX port.</li>
+<li>1x Flash memory slot.</li>
+<li>4x WIC slots.</li>
+</ul>
+<p>These WIC slots can be used to add certain cards. For example, DSL modems, serial interfaces, wireless access points and so on. Here’s an example of a WIC module for a serial interface:</p>
+<p><img class="alignnone size-full wp-image-39457" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/cisco-wic-1-t.png" alt="" width="548" height="168" srcset="https://networklessons.com/wp-content/uploads/2017/01/cisco-wic-1-t.png 548w, https://networklessons.com/wp-content/uploads/2017/01/cisco-wic-1-t-300x92.png 300w" sizes="(max-width: 548px) 100vw, 548px"></p>
+<p>We will be using this serial interface in our example.</p>
+<h2>Configuration</h2>
+<p>Let’s see if we can configure a 2800 router. First we will connect our blue Cisco console cable to our router and start Putty so that we can connect to the router:</p>
+<p><img class="alignnone size-full wp-image-34825" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/putty-serial-console-options.png" alt="putty serial console options" width="452" height="437" srcset="https://networklessons.com/wp-content/uploads/2016/11/putty-serial-console-options.png 452w, https://networklessons.com/wp-content/uploads/2016/11/putty-serial-console-options-300x290.png 300w" sizes="(max-width: 452px) 100vw, 452px"></p>
+<p>Make sure you select “Serial line” and set the speed at 9600. The COM port might be different for you, especially if you are using a USB to Serial adapter. Make sure to check this number in the Windows device manager.</p>
+<h3>First Boot</h3>
+<p>Once you are connected to the console port and switch on the power, you will see something like this:</p>
+<pre><code>System Bootstrap, Version 12.4(13r)T, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 2006 by cisco Systems, Inc.
+
+Initializing memory for ECC
+...
+<span style="color: #ff0000;">c2811 platform</span> with 786432 Kbytes of main memory
+Main memory is configured to 64 bit mode with ECC enabled
+
+
+Readonly ROMMON initialized
+program load complete, entry point: 0x8000f000, size: 0xcb80
+program load complete, entry point: 0x8000f000, size: 0xcb80
+
+program load complete, entry point: 0x8000f000, size: 0x40c7678</code></pre>
+<p>When the router starts, it first initializes ROMMON. This is a bit similar to the BIOS of a computer. It allows the router to perform some basic functions like loading the IOS operating system, which occurs next:</p>
+<pre><code>Self decompressing the image : ############################################################################################################################################################################################################################################################################################################################################################################################################################# [OK]</code></pre>
+<p>Once the operating system is decompressed, you will be greeted with Cisco’s copyright information:</p>
+<pre><code>Smart Init is disabled. IOMEM set to: 5  
+
+Using iomem percentage: 5
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, 2800 Software (C2800NM-ADVENTERPRISEK9-M), Version 15.1(4)M10, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2015 by Cisco Systems, Inc.
+Compiled Tue 24-Mar-15 09:00 by prod_rel_team
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.</code></pre>
+<p>And you will see some basic information about the router:</p>
+<pre><code>Installed image archive
+<span style="color: #ff0000;">Cisco 2811</span> (revision 1.0) with <span style="color: #ff0000;">747520K</span>/38912K bytes of memory.
+Processor board ID FTX1145A0XN
+<span style="color: #ff0000;">2 FastEthernet interfaces
+2 Serial(sync/async) interfaces</span>
+1 Virtual Private Network (VPN) Module
+DRAM configuration is 64 bits wide with parity enabled.
+239K bytes of non-volatile configuration memory.
+<span style="color: #ff0000;">3906504K bytes of ATA CompactFlash</span> (Read/Write)</code></pre>
+<p>Above we can see that this is a Cisco 2811 router which has 2 FastEthernet interfaces and 2 Serial interfaces. It also tells us how much RAM this router has and how big the compact flash memory is.</p>
+<p>Finally, the router asks us if we want to start the initial configuration dialog:</p>
+<pre><code>         --- System Configuration Dialog ---
+
+Would you like to enter the initial configuration dialog? [yes/no]: <span style="color: #ff0000;">no </span></code></pre>
+<p>Let’s enter <em>no</em> and continue. We will configure everything ourselves.</p>
+<div class="woo-sc-box  note   ">The system configuration message above will only appear if your router has no startup configuration.</div>
+<p>The final message is:</p>
+<pre><code>Press RETURN to get started!</code></pre>
+<p>At the bottom of the console, you will see this line:</p>
+<pre><code>Router&gt;</code></pre>
+<p>This means we are in user mode.</p>
+<h3>Erase Startup Configuration</h3>
+<p>The first thing we’ll do, just to be sure is remove the startup configuration so that we can start with a clean slate.</p>
+<p>Let’s enter enable mode:</p>
+<pre><code>Router&gt;<strong>enable</strong></code></pre>
+<div class="woo-sc-box  note   ">If your router asks you for a password and you have no idea what it is, you will have to perform a <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-password-recovery/">password recovery.</a></div>
+<p>Let’s erase the startup configuration:</p>
+<pre><code>Router#<strong>erase startup-config</strong> 
+Erasing the nvram filesystem will remove all configuration files! Continue? [confirm]
+[OK]
+Erase of nvram: complete</code></pre>
+<p>And reload the router so that we start with a blank configuration:</p>
+<pre><code>Router#<strong>reload</strong>
+
+System configuration has been modified. Save? [yes/no]: <span style="color: #ff0000;">no</span>
+Proceed with reload? <span style="color: #ff0000;">[confirm]</span></code></pre>
+<p>It might take a few minutes for the router to reload. Once it’s ready, head back to privileged mode by typing <strong>enable</strong> and we will continue.</p>
+<h3>Interfaces</h3>
+<div class="arve-wrapper" data-mode="normal" data-provider="vimeo" id="arve-video-1" style="max-width:700px;" itemscope="" itemtype="http://schema.org/VideoObject">
+<div class="arve-embed-container" style="padding-bottom:56.250000%"><meta itemprop="thumbnailUrl" content="https://i.vimeocdn.com/video/616859055_1280.jpg"><meta itemprop="name" content="cisco-ios-interfaces"><iframe allowfullscreen="" class="arve-iframe fitvidsignore" frameborder="0" scrolling="no" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/202759104.html" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups allow-forms"></iframe></div>
+</div>
+<p>Routers have an IP address on each interface that they have. Let’s say that we want to configure for the following scenario:</p>
+<p><img class="alignnone size-full wp-image-39895" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/h1-r1-leased-line.png" alt="h1 r1 leased line" width="894" height="120" srcset="https://networklessons.com/wp-content/uploads/2014/01/h1-r1-leased-line.png 894w, https://networklessons.com/wp-content/uploads/2014/01/h1-r1-leased-line-300x40.png 300w, https://networklessons.com/wp-content/uploads/2014/01/h1-r1-leased-line-768x103.png 768w" sizes="(max-width: 894px) 100vw, 894px"></p>
+<p>Above you can see that R1 is connected to H1 on its FastEthernet 0/0 interface, it should use IP address 192.168.1.254 and the subnet mask is 255.255.255.0 (/24). It’s also connected to a leased line using its Serial 0/0/0 interface.</p>
+<p>Here’s how you can see all interfaces on our router:</p>
+<pre><code>Router#<strong>show ip interface brief</strong>
+<span style="color: #ff0000;">Interface</span>                  <span style="color: #ff0000;">IP-Address</span>      <span style="color: #ff0000;">OK?</span> <span style="color: #ff0000;">Method Status</span>                <span style="color: #ff0000;">Protocol</span>
+FastEthernet0/0            unassigned      YES unset  administratively down down    
+FastEthernet0/1            unassigned      YES unset  administratively down down    
+Serial0/0/0                unassigned      YES unset  administratively down down    
+Serial0/1/0                unassigned      YES unset  administratively down down</code></pre>
+<p>Above you can see the four interfaces that this router has. It also tells us:</p>
+<ul>
+<li><strong>IP-Address</strong>: if the interface has an IP address or not.</li>
+<li><strong>OK</strong>: whether the interface is performing correctly or not.</li>
+<li><strong>Method</strong>: how the IP address is configured. For example, we can configure an IP address manually or through DHCP.</li>
+<li><strong>Status</strong>: this tells us if the interface is active or not.</li>
+<li><strong>Protocol</strong>: this tells us if the protocol that the interface is using is working or not.</li>
+</ul>
+<div class="woo-sc-box  note   ">All router interfaces are disabled by default. Administratively down means that the interface&nbsp;has a shutdown command.</div>
+<p>We can also take a closer look at any of these interfaces like this:</p>
+<pre><code>Router#<strong>show interfaces FastEthernet 0/0</strong>
+<span style="color: #ff0000;">FastEthernet0/0 is administratively down, line protocol is down</span> 
+  Hardware is MV96340 Ethernet, address is 001d.a18b.36d0 (bia 001d.a18b.36d0)
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto-duplex, Auto Speed, 100BaseTX/FX
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog
+     0 input packets with dribble condition detected
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     29 lost carrier, 0 no carrier
+     0 output buffer failures, 0 output buffers swapped out</code></pre>
+<p>Above we can see that the FastEthernet 0/0 interface is currently not in use. Let’s see if we can configure this interface.</p>
+<p>First, open the configuration mode:</p>
+<pre><code>Router#<strong>configure terminal </strong></code></pre>
+<p>Now go to the interface, add an IP address and enable it:</p>
+<pre><code>Router(config)#<strong>interface FastEthernet 0/0</strong>
+Router(config-if)#<strong>ip address 192.168.1.254 255.255.255.0</strong>
+Router(config-if)#<strong>no shutdown</strong></code></pre>
+<p>This interface is now active.</p>
+<p>We also have a serial interface. As explained in the<a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-wans-wide-area-network/"> introduction to WANs lesson</a>, a serial interface might require a clock rate. If you connect two routers back-to-back with serial links then the DCE side requires a clock rate. Let’s see if this is the case:</p>
+<pre><code>Router#<strong>show controllers Serial 0/0/0</strong>
+CD2430 Slot 1, Port 0, Controller 0, Channel 0, Revision 19
+Channel mode is synchronous serial 
+idb 0x498B25D8, buffer size 1524, <span style="color: #ff0000;">V.35 DCE cable</span></code></pre>
+<p>Above you can see that this router is the DCE so we will have to set a clock rate.</p>
+<pre><code>Router(config)#<strong>interface Serial0/0/0</strong>
+Router(config-if)#<strong>clock rate 12800</strong></code></pre>
+<p>We can use the same command to verify that the clock rate has been configured:</p>
+<pre><code>Router#<strong>show controllers Serial 0/0/0</strong>
+CD2430 Slot 1, Port 0, Controller 0, Channel 0, Revision 19
+Channel mode is synchronous serial 
+idb 0x498B25D8, buffer size 1524, V.35 DCE cable, <span style="color: #ff0000;">clockrate 128000</span></code></pre>
+<p>Now we can continue by setting an IP address and enabling the interface:</p>
+<pre><code>Router(config)#<strong>interface Serial 0/0/0</strong>
+Router(config-if)#<strong>no shutdown</strong>
+Router(config-if)#<strong>ip address 192.168.12.1 255.255.255.0</strong></code></pre>
+<p>Our router should now have two active interfaces. Let’s verify that:</p>
+<pre><code>Router#<strong>show ip interface brief</strong>
+Interface                  IP-Address      OK? Method Status                Protocol
+<span style="color: #ff0000;">FastEthernet0/0            192.168.1.254   YES manual up                    up</span>      
+FastEthernet0/1            unassigned      YES unset  administratively down down    
+<span style="color: #ff0000;">Serial0/0/0                192.168.12.1    YES manual up                    up</span>      
+Serial0/1/0                unassigned      YES unset  administratively down down</code></pre>
+<p>An alternative command that gives you a similar result is the <strong>show protocols</strong> command:</p>
+<pre><code>Router#<strong>show protocols</strong>
+Global values:
+  Internet Protocol routing is enabled
+<span style="color: #ff0000;">FastEthernet0/0 is up, line protocol is up
+  Internet address is 192.168.1.254/24</span>
+FastEthernet0/1 is administratively down, line protocol is down
+<span style="color: #ff0000;">Serial0/0/0 is up, line protocol is up
+  Internet address is 192.168.12.1/24</span>
+Serial0/1/0 is administratively down, line protocol is down</code></pre>
+<p>This router now has two active interfaces with IP addresses. In other lessons, we’ll look at how it can route packets from one interface to another.</p>
+<h3>Conclusion</h3>
+<p>You have now learned what the boot process of a Cisco IOS router looks like and how to erase the startup configuration so that you can start with a blank configuration. We have also seen how to check what interfaces this router has, and how to configure IP addresses on each interface. You have also seen how you can check if your serial interface is the DCE or DTE side and how to set a clock rate.</p>
+<span id="dprv_cp-v3.05" lang="en" xml:lang="en" class="notranslate" style="vertical-align:baseline; padding: 2px 3px 2px 3px; margin-top:2px; margin-bottom:2px; border-collapse:separate; line-height:12px;float:none; font-family: Tahoma, MS Sans Serif; font-size:13px;border:0px;background:transparent none;display:inline-block;" title="certified 6 February 2017 13:32:56 UTC by Digiprove certificate P823512"><a href="https://www.digiprove.com/prove_compliance.aspx?id=P823512" target="_blank" rel="copyright" style="height:12px; line-height: 12px; border:0px; padding:0px; margin:0px; float:none; display:inline;background:transparent none; line-height:normal; font-family: Tahoma, MS Sans Serif; font-style:normal; font-weight:normal; font-size:9px;"><img src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/dp_seal_trans_16x16.png" style="max-width:none !important;width:12px;height:12px;vertical-align:0px; display:inline; border:0px; margin:0px; padding:0px; float:none; background:transparent none" alt="Digiprove seal"><span style="font-family: Tahoma, MS Sans Serif; font-style:normal; font-size:9px; font-weight:normal; color:#636363; border:0px; float:none; display:inline; letter-spacing:normal; padding:0px; padding-left:6px; vertical-align:3px;margin-bottom:3px" onmouseover="this.style.color=&#39;#A35353&#39;;" onmouseout="this.style.color=&#39;#636363&#39;;">Copyright&nbsp;protected&nbsp;by&nbsp;Digiprove&nbsp;©&nbsp;2014-2017&nbsp;Rene&nbsp;Molenaar</span></a><!--404A203585336D24AE4D596A40875E8D1B59F5EA841839BA870D93FEE306567C--></span>									</section>
+									
+            </article><!-- .post -->
+		
+		</section><!-- #main -->
+
+		<div class="post-content">
+
+			
+						
+					
+		<div class="cmd_post_nav">
+							<div class="cmd_previous">
+					<a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-spanning-tree/" rel="prev"><strong>Previous Lesson</strong><br>Introduction to Spanning-Tree</a>
+				</div>
+				
+							<div class="cmd_next">
+					<a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/introduction-to-routers-and-routing/" rel="next"><strong>Next Lesson</strong><br>Introduction to Routers and Routing</a>
+				</div>
+					</div>
+
+				
+			<p class="tags">Tags: <a href="https://networklessons.com/tag/router/" rel="tag">Router</a></p>			
+			<hr>
+			
+			<!-- #post-entries -->
+
+			    <div id="comments" class="comments-area discourse-comments-area">
+        <h2 class="comments-title discourse-comments-title">Forum Replies</h2>
+        <ol class="comment-list">		<li class="comment even thread-even depth-1">
+			<article class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/396_1.png" class="avatar avatar-64 photo avatar-default" height="64" width="64">
+						<b class="fn"><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" rel="external" class="url">hussien.samer</a></b>
+						<span class="says screen-reader-text">says:</span><!-- screen reader text -->
+					</div>
+					<!-- .comment-author -->
+					<div class="comment-metadata">
+						<time datetime="July 9, 2015">July 9, 2015</time>
+					</div>
+					<!-- .comment-metadata -->
+				</footer>
+				<!-- .comment-meta -->
+				<div class="comment-content"><p>Thank you Rene I understand the concept of “login” and  “login local” but my question about password  encryption let me explain to you my question in another way:<br>login local refers to a local database on the router or switch with usernames / passwords as you said but the password possible to be encrypted or not if I configure it in plain text how can I change it to encrypted Text or vice versa ,<br>this is my question?</p>
+
+<p>*when I try to change it this message appears to me :</p>
+
+<pre><code>SW3(config)#us hussein pa 121212
+ERROR: Can not have both a user password and a user secret.
+Please choose one or the other.</code></pre>
+
+<p>how can I change between them?</p></div>
+				<!-- .comment-content -->
+			</article>
+			<!-- .comment-body -->
+		</li>
+				<li class="comment even thread-even depth-1">
+			<article class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/488_1.png" class="avatar avatar-64 photo avatar-default" height="64" width="64">
+						<b class="fn"><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" rel="external" class="url">ReneMolenaar</a></b>
+						<span class="says screen-reader-text">says:</span><!-- screen reader text -->
+					</div>
+					<!-- .comment-author -->
+					<div class="comment-metadata">
+						<time datetime="July 13, 2015">July 13, 2015</time>
+					</div>
+					<!-- .comment-metadata -->
+				</footer>
+				<!-- .comment-meta -->
+				<div class="comment-content"><p>Hi Hussein,</p>
+
+<p>I just checked and packet tracer does support the HWIC-4ESW module for switching ports. Normally on a router we don't use VLAN interfaces, only if you require a L3 interface for switchports. The switchports of a switch module are a good example but it's also used for the internal access point on a 1941. Here's an example where I used it:</p>
+
+<p><a href="https://networklessons.com/wireless/cisco-1941w-wireless-configuration-example/" class="onebox" target="_blank" rel="nofollow noopener">https://networklessons.com/wireless/cisco-1941w-wireless-configuration-example/</a></p>
+
+<p>Rene</p></div>
+				<!-- .comment-content -->
+			</article>
+			<!-- .comment-body -->
+		</li>
+				<li class="comment even thread-even depth-1">
+			<article class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/645_1.png" class="avatar avatar-64 photo avatar-default" height="64" width="64">
+						<b class="fn"><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" rel="external" class="url">andrew</a></b>
+						<span class="says screen-reader-text">says:</span><!-- screen reader text -->
+					</div>
+					<!-- .comment-author -->
+					<div class="comment-metadata">
+						<time datetime="October 27, 2016">October 27, 2016</time>
+					</div>
+					<!-- .comment-metadata -->
+				</footer>
+				<!-- .comment-meta -->
+				<div class="comment-content"><p>We will need more information.  What IP are you trying to reach on the switch?  Is this IP an SVI or assigned to a physical interface?  What IP are you making the connection from?  What are the details of your access-list 23?  Have you tried making your connection on the same subnet as the IP to which you are trying to connect?  When say it is refusing the connection, is the port open, but actively rejecting your attempt, or you get no response at all?  If you are using SSH, I assume you have done a crypto key generate rsa?</p></div>
+				<!-- .comment-content -->
+			</article>
+			<!-- .comment-body -->
+		</li>
+				<li class="comment even thread-even depth-1">
+			<article class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/442_1.png" class="avatar avatar-64 photo avatar-default" height="64" width="64">
+						<b class="fn"><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" rel="external" class="url">mrleeiian</a></b>
+						<span class="says screen-reader-text">says:</span><!-- screen reader text -->
+					</div>
+					<!-- .comment-author -->
+					<div class="comment-metadata">
+						<time datetime="November 2, 2016">November 2, 2016</time>
+					</div>
+					<!-- .comment-metadata -->
+				</footer>
+				<!-- .comment-meta -->
+				<div class="comment-content"><p>We will need more information. What IP are you trying to reach on the switch? 10.0.212.x/24</p>
+
+<p><strong>Is this IP an SVI or assigned to a physical interface? </strong><br>SVI with correct ip default-gateway 10.0.212.1 configured</p>
+
+<p><strong>What IP are you making the connection from? </strong><br>10.13.8.10/24</p>
+
+<p><strong>What are the details of your access-list 23? </strong><br>access-list 23 permit 10.13.8.0 0.0.0.255</p>
+
+<p><strong>Have you tried making your connection on the same subnet as the IP to which you are trying to connect? </strong><br>Yes my jumphost is in the same subnet as the access-list 23</p>
+
+<p><strong>When say it is refusing the connection, is the port open, but actively rejecting your attempt, or you get no response at all? </strong><br>I am getting a response. "The remote system refused the connection" error message on both telnet and ssh.</p>
+
+<p><strong>If you are using SSH, I assume you have done a crypto key generate rsa?</strong><br>Cant do a sh crypto key rsa but I have some old configs that show the below<br>crypto pki trustpoint TP-self-signed-xxxxx<br> enrollment selfsigned<br> subject-name cn=IOS-Self-Signed-Certificate-xxxxxxx<br> revocation-check none<br> rsakeypair TP-self-signed-2890998016<br>!<br>!<br>crypto pki certificate chain TP-self-signed-xxxxxxxx<br>bunch of numbers/characters</p></div>
+				<!-- .comment-content -->
+			</article>
+			<!-- .comment-body -->
+		</li>
+				<li class="comment even thread-even depth-1">
+			<article class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/5_1.png" class="avatar avatar-64 photo avatar-default" height="64" width="64">
+						<b class="fn"><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" rel="external" class="url">lagapides</a></b>
+						<span class="says screen-reader-text">says:</span><!-- screen reader text -->
+					</div>
+					<!-- .comment-author -->
+					<div class="comment-metadata">
+						<time datetime="November 13, 2016">November 13, 2016</time>
+					</div>
+					<!-- .comment-metadata -->
+				</footer>
+				<!-- .comment-meta -->
+				<div class="comment-content"><p>Hello I Ian</p>
+
+<p>Looking over your config and your comments, I suggest you check the following:</p>
+
+<p>1) Since you can ping the IP address, routing to the device is successful, so no problems there.<br>2) There's no timeout, so it can't be busy ports<br>3) A refusal of connection with this message that you report means that something, such as a lack of ssh or telnet configuration, is not allowing you to connect.<br>4) Are there any restrictions on the SVI interface such as access lists?</p>
+
+<p>The quickest way to solve this would probably be to do a password recovery via a console and check the config.  You should remove any configuration of the VTY lines and reconfigure them including a new crypto key generate rsa for your SSH configuration.</p>
+
+<p>I hope this has been helpful!</p>
+
+<p>Laz</p></div>
+				<!-- .comment-content -->
+			</article>
+			<!-- .comment-body -->
+		</li>
+		</ol>
+        <div class="respond comment-respond">
+            <p id="reply-title" class="comment-reply-title"><strong><a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" target="_blank">29 more replies!</a></strong> Ask a question or join the discussion by visiting our <a href="https://forum.networklessons.com/t/cisco-ios-router-basic-configuration/1065" target="_blank">Community Forum</a></p>
+        </div>
+    </div>
+      
+			
+						
+		</div><!-- #post-content -->
+	
+    </div><!-- #content -->
+		
+	
+		
+	<footer id="footer">
+	
+					
+			<section id="footer-widgets" class="col-full col-4 fix">
+			
+								    				
+				<div class="block footer-widget-1">
+    		        			<div id="woo_blogauthorinfo-3" class="widget widget_woo_blogauthorinfo">			<h3>About NetworkLessons.com</h3>			<span class="left"><img alt="" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/ea015bd2e13b654ed5f913ae106af366" srcset="https://secure.gravatar.com/avatar/ea015bd2e13b654ed5f913ae106af366?s=200&amp;d=mm&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100"></span>
+			<p>Hello There! I'm René Molenaar (CCIE #41726), Your main Instructor of NetworkLessons.com. I'd like to teach you everything about Cisco, Wireless and Security. I am here to Help You Master Networking!</p>
+			<p class="readmore"><a class="button" href="https://networklessons.com/about-networklessons-com/">Read my story</a></p>			<div class="fix"></div>
+			</div>				</div>
+				
+			        								    				
+				<div class="block footer-widget-2">
+    		        <div id="essbsocialfollowerscounterwidget-2" class="widget widget_essbsocialfollowerscounterwidget"><h3>Social Fans</h3><div class="essbfc-container essbfc-col-2 essbfc-template-grey"><ul><li class="essbfc-facebook"><a href="https://www.facebook.com/NetworkLessons" target="_blank" rel="nofollow"><div class="essbfc-network"><i class="essbfc-icon essbfc-icon-facebook"></i><span class="essbfc-followers-count">14,359</span><span class="essbfc-followers-text">Fans</span></div></a></li><li class="essbfc-twitter"><a href="https://www.twitter.com/NetworkLessons" target="_blank" rel="nofollow"><div class="essbfc-network"><i class="essbfc-icon essbfc-icon-twitter"></i><span class="essbfc-followers-count">9,672</span><span class="essbfc-followers-text">Followers</span></div></a></li><li class="essbfc-linkedin"><a href="https://www.linkedin.com/company/9446526" target="_blank" rel="nofollow"><div class="essbfc-network"><i class="essbfc-icon essbfc-icon-linkedin"></i><span class="essbfc-followers-count">132</span><span class="essbfc-followers-text">Followers</span></div></a></li><li class="essbfc-youtube"><a href="https://www.youtube.com/channel/NetworkLessons" target="_blank" rel="nofollow"><div class="essbfc-network"><i class="essbfc-icon essbfc-icon-youtube"></i><span class="essbfc-followers-count">3,129</span><span class="essbfc-followers-text">Subscribers</span></div></a></li></ul></div></div>				</div>
+				
+			        								    				
+				<div class="block footer-widget-3">
+    		        		<div id="recent-posts-4" class="widget widget_recent_entries">		<h3>New Lessons</h3>		<ul>
+					<li>
+				<a href="https://networklessons.com/cisco/ccie-routing-switching-written/ospf-loop-free-alternate-lfa-fast-reroute-frr/">OSPF Loop-Free Alternate (LFA) Fast Reroute (FRR)</a>
+						</li>
+					<li>
+				<a href="https://networklessons.com/cisco/ccie-routing-switching-written/spanning-tree-bridge-assurance/">Spanning-Tree Bridge Assurance</a>
+						</li>
+					<li>
+				<a href="https://networklessons.com/cisco/ccie-routing-switching-written/stp-dispute/">STP Dispute</a>
+						</li>
+					<li>
+				<a href="https://networklessons.com/cisco/ccie-routing-switching-written/mst-pvst-interoperability/">MST and PVST+ Interoperability</a>
+						</li>
+					<li>
+				<a href="https://networklessons.com/cisco/ccie-routing-switching-written/eigrp-loop-free-alternate-lfa-fast-reroute-frr/">EIGRP Loop-Free Alternate (LFA) Fast Reroute (FRR)</a>
+						</li>
+				</ul>
+		</div>						</div>
+				
+			        								    				
+				<div class="block footer-widget-4">
+    		        <div id="cycledtestimonialwidget-2" class="widget cycledTestimonialWidget"><h3>Testimonials</h3>		<div class="easy-t-slideshow-wrap easy-t-1979622705" style="width: ">
+		
+										
+							<div class="cycle-slideshow" data-cycle-fx="fade" data-cycle-timeout="6000" data-cycle-slides="div.testimonial_slide" data-cycle-auto-height="calc" data-cycle-pause-on-hover="true" data-cycle-log="false" style="position: relative;"><div style="display: block; position: static; top: 0px; left: 0px; z-index: 92; visibility: hidden;" class="testimonial_slide cycle-slide cycle-sentinel">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial" style="visibility: hidden;">
+						<blockquote class="easy_testimonial" style="visibility: hidden;">
+				<div class="easy_testimonial_image_wrapper" style="visibility: hidden;"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/James-Chen-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="James Chen" srcset="https://networklessons.com/wp-content/uploads/2016/08/James-Chen-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/08/James-Chen-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/08/James-Chen.jpg 200w" sizes="(max-width: 150px) 100vw, 150px" style="visibility: hidden;"></div>		
+				<p class="easy_testimonial_title" style="visibility: hidden;">Great Lessons!</p>	
+								<div class="testimonial_body" style="visibility: hidden;">
+					<p style="visibility: hidden;">When I searched online how to configure MPLS L3 VPN, I found NetworkLessons.com. From the start, I liked almost every lesson on this site. I had subscribed to CBT Nuggets before, but that cost me a whopping $99 per month. NetworkLessons.com is a fraction of this. Though I don't come to learn every day, I feel it is still worthy for what I learn or refresh here. I already had my CCNP Switch and Route certificate. I'm learning to prepare for CCNP TSHOOT here, and probably CCIE Switch and Route later. I look forward to staying for a while until I get my CCIE passed. Thank you Rene, for all your great lessons!</p>
+									</div>	
+						<p class="testimonial_author" style="visibility: hidden;">
+									<cite style="visibility: hidden;">
+									<span class="testimonial-client" style="visibility: hidden;">James H. Chen</span>
+													<span class="testimonial-position" style="visibility: hidden;">Network Engineer</span>
+																	<span class="date" style="visibility: hidden;">August 3, 2016</span>
+																		<span class="stars" style="visibility: hidden;">
+					<span class="dashicons dashicons-star-filled" style="visibility: hidden;"></span><span class="dashicons dashicons-star-filled" style="visibility: hidden;"></span><span class="dashicons dashicons-star-filled" style="visibility: hidden;"></span><span class="dashicons dashicons-star-filled" style="visibility: hidden;"></span><span class="dashicons dashicons-star-filled" style="visibility: hidden;"></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear" style="visibility: hidden;"></div>
+			</blockquote>
+		</div></div>
+						<div class="testimonial_slide cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 88; opacity: 0; display: block; visibility: hidden;">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="100" height="100" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/27ef229.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="27ef229" srcset="https://networklessons.com/wp-content/uploads/2016/01/27ef229.jpg 100w, https://networklessons.com/wp-content/uploads/2016/01/27ef229-50x50.jpg 50w" sizes="(max-width: 100px) 100vw, 100px"></div>		
+				<p class="easy_testimonial_title">Extremely Beneficial Resource</p>	
+								<div class="testimonial_body">
+					<p>Networklessons.com has really helped me in my pursuit of Cisco certifications. It does a great job at clearly explaining each topic, and keeping lessons to the point. Being able to ask Rene a question about any topic and getting a fast response is another great aspect of joining this site. I have not found any other site that can teach you about networking as well as Networklessons.com does. It is well worth the money if you are serious about pursuing Cisco certifications. Thanks Rene!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Adam Mc Donnell</span>
+													<span class="testimonial-position" style="">Network Engineer</span>
+																	<span class="date" style="">January 18, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 100; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Christian-Richter-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Christian Richter" srcset="https://networklessons.com/wp-content/uploads/2017/04/Christian-Richter-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2017/04/Christian-Richter-100x100.jpg 100w, https://networklessons.com/wp-content/uploads/2017/04/Christian-Richter-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2017/04/Christian-Richter.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Great Source of Information</p>	
+								<div class="testimonial_body">
+					<p>I had the classroom training for CCNP Routing &amp; Switching and failed the test afterward. That was the reason why I searched for more and better information and found it here. NetworkLessons.com is great. Easy to follow explanations and videos. It covers all topics of the actual test. With the material from NetworkLessons.com, I passed ROUTE (with a 94% score!) and SWITCH (an 88%!) and have 1 more to go (TSHOOT). I am very confident to pass this as well. Thank you very much, Rene!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Christian Richter</span>
+													<span class="testimonial-position" style="">Network Engineer</span>
+																	<span class="date" style="">May 8, 2017</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 99; visibility: visible; opacity: 1;" class="testimonial_slide cycle-slide cycle-slide-active">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Julemar-Combate-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="julemar-combate" srcset="https://networklessons.com/wp-content/uploads/2016/12/Julemar-Combate-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/12/Julemar-Combate-100x100.jpg 100w, https://networklessons.com/wp-content/uploads/2016/12/Julemar-Combate-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/12/Julemar-Combate.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Simply the Best!</p>	
+								<div class="testimonial_body">
+					<p>NetworkLessons.com is one of the most valuable resources for your CCNP/CCIE networking studies. The materials are well presented and easy to understand. I really recommend getting a subscription!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Julemar Combate</span>
+													<span class="testimonial-position" style="">Senior Network Engineer</span>
+																	<span class="date" style="">December 19, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 97; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Don-Druja-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Don Druja" srcset="https://networklessons.com/wp-content/uploads/2015/11/Don-Druja-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2015/11/Don-Druja-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2015/11/Don-Druja.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Great Work!</p>	
+								<div class="testimonial_body">
+					<p>It's like a spoon feeding type of tutorial. Thanks!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Don Druja</span>
+													<span class="testimonial-position" style="">Network Engineer</span>
+																	<span class="date" style="">November 10, 2015</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 96; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Soufiane-A-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Soufiane A" srcset="https://networklessons.com/wp-content/uploads/2015/09/Soufiane-A-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2015/09/Soufiane-A-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2015/09/Soufiane-A.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">I am using it everyday!</p>	
+								<div class="testimonial_body">
+					<p>Networklessons.com is great tool that can be used everyday for learning or for work, you can find easily all the information you need, and the best thing is that if you have any particular question about anything in networking all you need to do is to send it Rene and he will answer it quickly. I recommend it to everyone. Thanks Rene!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Soufiane A.</span>
+													<span class="testimonial-position" style="">Senior Network Architect</span>
+																	<span class="date" style="">September 24, 2015</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 95; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Dave-Abhishek-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Dave Abhishek" srcset="https://networklessons.com/wp-content/uploads/2016/08/Dave-Abhishek-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/08/Dave-Abhishek-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/08/Dave-Abhishek.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">I Only Wish I Knew Before…</p>	
+								<div class="testimonial_body">
+					<p>I am very impressed with the way difficult networking concepts are easily explained by Rene in his lessons. I have no doubt in saying that signing up for membership was the best investment I have spent on learning networking. I only wish I would have started reading NetworkLessons.com long before!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Dave Abhishek</span>
+													<span class="testimonial-position" style="">Network Consulting</span>
+																	<span class="date" style="">August 23, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 94; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Dylan-Costigan-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Dylan-Costigan" srcset="https://networklessons.com/wp-content/uploads/2016/01/Dylan-Costigan-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/01/Dylan-Costigan-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/01/Dylan-Costigan.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">THE Go-to Resource!</p>	
+								<div class="testimonial_body">
+					<p>As I study for my CCIE I read a lot of books, blogs and technotes about the individual topics to try to ensure that I have a complete understanding of each subject. Networklessons.com is by far the best at breaking down complex items into easily understood pieces, and it is my go-to website when I'm getting confused about something. If when I get my CCIE, I will owe Rene a personal thank you for the assistance and the online resources of Networklessons.com!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Dylan Costigan</span>
+													<span class="testimonial-position" style="">Network Engineer</span>
+																	<span class="date" style="">January 18, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 93; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/James-Chen-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="James Chen" srcset="https://networklessons.com/wp-content/uploads/2016/08/James-Chen-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/08/James-Chen-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/08/James-Chen.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Great Lessons!</p>	
+								<div class="testimonial_body">
+					<p>When I searched online how to configure MPLS L3 VPN, I found NetworkLessons.com. From the start, I liked almost every lesson on this site. I had subscribed to CBT Nuggets before, but that cost me a whopping $99 per month. NetworkLessons.com is a fraction of this. Though I don't come to learn every day, I feel it is still worthy for what I learn or refresh here. I already had my CCNP Switch and Route certificate. I'm learning to prepare for CCNP TSHOOT here, and probably CCIE Switch and Route later. I look forward to staying for a while until I get my CCIE passed. Thank you Rene, for all your great lessons!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">James H. Chen</span>
+													<span class="testimonial-position" style="">Network Engineer</span>
+																	<span class="date" style="">August 3, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 92; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/gabriel.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="gabriel"></div>		
+				<p class="easy_testimonial_title">Easy To Read</p>	
+								<div class="testimonial_body">
+					<p>There are a lot of websites with content about computer networks but on networklessons I found the best and easy to read articles to help me prepare for Cisco exams. I am very happy and excited about each subject that I have learned!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Gabriel Santana</span>
+													<span class="testimonial-position" style="">Data Center Analyst</span>
+																	<span class="date" style="">May 15, 2015</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 91; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Mohammad-Hasanuz-Zaman-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Mohammad Hasanuz Zaman" srcset="https://networklessons.com/wp-content/uploads/2017/02/Mohammad-Hasanuz-Zaman-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2017/02/Mohammad-Hasanuz-Zaman-100x100.jpg 100w, https://networklessons.com/wp-content/uploads/2017/02/Mohammad-Hasanuz-Zaman-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2017/02/Mohammad-Hasanuz-Zaman.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Precise, Accurate and complete</p>	
+								<div class="testimonial_body">
+					<p>NetworkLessons.com is very helpful, interesting and informative. Complex topics explained in a simple way that is very easy to understand. Amazing! Each topic of professional networking courses like CCNA, CCNP, and CCIE includes understandable examples and great instruction videos. Many Thanks to Rene! I think you are a top ranked teacher!</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Mohammad Hasanuz Zaman</span>
+													<span class="testimonial-position" style="">Assistant Manager</span>
+																	<span class="date" style="">February 16, 2017</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 90; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/Aravind-Chinapaga-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Aravind Chinapaga" srcset="https://networklessons.com/wp-content/uploads/2016/08/Aravind-Chinapaga-150x150.jpg 150w, https://networklessons.com/wp-content/uploads/2016/08/Aravind-Chinapaga-50x50.jpg 50w, https://networklessons.com/wp-content/uploads/2016/08/Aravind-Chinapaga.jpg 200w" sizes="(max-width: 150px) 100vw, 150px"></div>		
+				<p class="easy_testimonial_title">Great Stuff</p>	
+								<div class="testimonial_body">
+					<p>Great stuff here at NetworkLessons.com! Rene's lessons are real world scenarios which allow us to grasp most of the networking concepts with ease and on a fast track. The discussion forums that follow each tutorial allow us to comprehend technical nitty gritty's in a clear and precise manner. I have learned most of the routing and switching concepts on a fast track here which is otherwise not possible via text book learning. I recommend NetworkLessons.com to all networking professionals.</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Aravind Chinapaga</span>
+													<span class="testimonial-position" style="">Sr. Associate Network Engineer</span>
+																	<span class="date" style="">August 25, 2016</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div><div style="display: block; position: absolute; top: 0px; left: 0px; z-index: 89; visibility: hidden; opacity: 0;" class="testimonial_slide cycle-slide">		<div class="style-business_style-blue  show_thumbs show_title show_date stars_rating hide_other easy-t-category-photo-included  easy_t_single_testimonial">
+						<blockquote class="easy_testimonial" style="">
+				<div class="easy_testimonial_image_wrapper"><img width="150" height="150" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/tom.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="tom"></div>		
+				<p class="easy_testimonial_title">Well Explained</p>	
+								<div class="testimonial_body">
+					<p>When I decided to make a career change two years ago I enrolled in school and didn’t even know how to send an e-mail. After searching for any help I could get I came across a website which I am on every single day as my “go-to” site, networklessons.com. I recently passed my CCNA R&amp;S exams and it was only possible because of how well networklessons.com explained every topic. I look forward to using this site for many future certifications.</p>
+									</div>	
+						<p class="testimonial_author">
+									<cite>
+									<span class="testimonial-client" style="">Tom Kraenbring</span>
+													<span class="testimonial-position" style="">NOC Technician</span>
+																	<span class="date" style="">May 17, 2015</span>
+																		<span class="stars">
+					<span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span><span class="dashicons dashicons-star-filled" style=""></span>			
+					</span>	
+												</cite>
+								
+		</p>	
+					<div class="easy_t_clear"></div>
+			</blockquote>
+		</div></div></div>
+			
+									<div class="easy-t-cycle-controls">				
+															
+			</div>	
+						
+		</div><!-- end slideshow wrap --></div>				</div>
+				
+			        							
+			</section><!-- /#footer-widgets  -->
+		
+			
+		<div class="col-full">
+	
+			<div id="credit" class="col-right">
+							
+			<ul id="footer-nav" class="nav"><li id="menu-item-22469" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22469"><a href="https://networklessons.com/disclaimer/">Disclaimer</a></li>
+<li id="menu-item-22470" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22470"><a href="https://networklessons.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-22468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22468"><a href="https://networklessons.com/support/">Support</a></li>
+</ul>					
+			</div>
+			
+								
+			<p style="font-size: 13px">© 2013 - 2017 NetworkLessons.com </p>			
+		</div>
+
+
+
+	</footer><!-- /#footer  -->
+
+</div><!-- /#wrapper -->
+<script type="text/javascript">
+var colomatduration = 'fast';
+var colomatslideEffect = 'slideFade';
+</script><div id="mm-payment-options-dialog"></div>
+<div id="mm-payment-confirmation-dialog"></div>
+<script>
+	jQuery(document).ready(function(){
+		if(jQuery.isFunction("dialog")) {
+			jQuery("#mm-payment-options-dialog").dialog({autoOpen: false});
+			jQuery("#mm-payment-confirmation-dialog").dialog({autoOpen: false});
+		}
+	});
+</script>
+<div class="scroll-back-to-top-wrapper show">
+	<span class="scroll-back-to-top-inner">
+					<i class="fa fa-2x fa-arrow-circle-up"></i>
+			</span>
+</div>
+<style type="text/css">
+    #wpfront-notification-bar 
+    {
+        background: #ffc369;
+        background: -moz-linear-gradient(top, #ffc369 0%, #ffc369 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc369), color-stop(100%,#ffc369));
+        background: -webkit-linear-gradient(top, #ffc369 0%,#ffc369 100%);
+        background: -o-linear-gradient(top, #ffc369 0%,#ffc369 100%);
+        background: -ms-linear-gradient(top, #ffc369 0%,#ffc369 100%);
+        background: linear-gradient(to bottom, #ffc369 0%, #ffc369 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc369', endColorstr='#ffc369',GradientType=0 );
+    }
+
+    #wpfront-notification-bar div.wpfront-message
+    {
+        color: #000000;
+    }
+
+    #wpfront-notification-bar a.wpfront-button
+    {
+        background: #4bb797;
+        background: -moz-linear-gradient(top, #4bb797 0%, #4bb797 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4bb797), color-stop(100%,#4bb797));
+        background: -webkit-linear-gradient(top, #4bb797 0%,#4bb797 100%);
+        background: -o-linear-gradient(top, #4bb797 0%,#4bb797 100%);
+        background: -ms-linear-gradient(top, #4bb797 0%,#4bb797 100%);
+        background: linear-gradient(to bottom, #4bb797 0%, #4bb797 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4bb797', endColorstr='#4bb797',GradientType=0 );
+
+        color: #ffffff;
+    }
+
+    #wpfront-notification-bar-open-button
+    {
+        background-color: #00b7ea;
+    }
+
+    #wpfront-notification-bar  div.wpfront-close 
+    {
+        border: 1px solid #555555;
+        background-color: #555555;
+        color: #000000;
+    }
+
+    #wpfront-notification-bar  div.wpfront-close:hover 
+    {
+        border: 1px solid #aaaaaa;
+        background-color: #aaaaaa;
+    }
+</style>
+
+
+
+
+
+<style type="text/css">
+/* Move mobile navigation menu down to fit top bar above */
+#sdrn_bar { margin-top: 97px !important; }
+#sdrn_menu { margin-top: 97px !important; }
+
+/* Apply website font */
+#wpfront-notification-bar {
+    font-family: Titillium Web, arial, sans-serif;
+    font-size: 1.2em;
+}
+
+/* Styling of CTA button */
+#wpfront-notification-bar a.wpfront-button {
+    font-size: 1.3em;
+    font-weight: 400;
+    border-radius: 5px;
+    padding: 12px  15px;
+    box-shadow: 0 3px 0 #0d8468;
+}
+
+/* Smaller font on mobile devices */
+@media only screen and (max-device-width: 450px) {
+	#wpfront-notification-bar div.wpfront-message { font-size: 15px; !important }
+}
+
+/* Set line height for some nice margin between text and button on mobile devices */
+.wpfront-message { line-height: 2em}
+
+/* Fix to remove white line around top bar */
+#wpfront-notification-bar td {
+    padding: 10px 0px 15px 0px;
+    box-shadow: none;
+}</style>
+<script type="text/javascript">if(typeof wpfront_notification_bar == "function") wpfront_notification_bar({"position":1,"height":0,"fixed_position":"on","animate_delay":0,"close_button":false,"button_action_close_bar":false,"auto_close_after":0,"display_after":0,"is_admin_bar_showing":false,"display_open_button":false,"keep_closed":false,"keep_closed_for":0,"position_offset":0,"display_scroll":false,"display_scroll_offset":100});</script><!--[if lt IE 9]>
+<script src="https://networklessons.com/wp-content/themes/definition/includes/js/respond.js"></script>
+<![endif]-->
+<link rel="stylesheet" id="advanced-responsive-video-embedder-css" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/arve.min.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var socialLoginVars = {"endpointUrl":"https:\/\/networklessons.com\/wp-content\/plugins\/membermouse\/endpoints\/auth.php"};
+var socialLoginVars = {"endpointUrl":"https:\/\/networklessons.com\/wp-content\/plugins\/membermouse\/endpoints\/auth.php"};
+var socialLoginVars = {"endpointUrl":"https:\/\/networklessons.com\/wp-content\/plugins\/membermouse\/endpoints\/auth.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mm-social_login.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.blockUI.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var geot = {"ajax_url":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php","ajax":"","is_archives":"","is_search":"","is_singular":"1","is_page":"","is_single":"1","dropdown_search":"","dropdown_redirect":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/geotarget-public-min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/collapse.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/accordion.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/button.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/datepicker.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mouse.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/resizable.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/draggable.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/dialog.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/droppable.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/progressbar.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/selectable.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/sortable.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var scrollBackToTop = {"scrollDuration":"500","fadeDuration":"0.5"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/scroll-back-to-top.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var discourse = {"url":"https:\/\/forum.networklessons.com"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/comments.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var MabAjax = {"ajaxurl":"https:\/\/networklessons.com\/wp-admin\/admin-ajax.php","action":"mab-process-optin","wpspinner":"https:\/\/networklessons.com\/wp-admin\/images\/wpspin_light.gif","wpspinner2x":"https:\/\/networklessons.com\/wp-admin\/images\/wpspin_light-2x.gif","spinner":"https:\/\/networklessons.com\/wp-admin\/images\/spinner.gif","spinner2x":"https:\/\/networklessons.com\/wp-admin\/images\/spinner-2x.gif","baseStylesUrl":"https:\/\/networklessons.com\/wp-content\/plugins\/magic-action-box-pro\/styles\/"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/ajax-form.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/essb-core.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.transit.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/mobile.nav.frontend.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/responsive-videos.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var bellows_data = {"config":{"main":{"folding":"multiple","current":"on"}},"v":"1.2"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/bellows.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.cycle2.pro.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/jquery.rateit.min.js"></script>
+<script type="text/javascript" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/arve.min.js"></script>
+<!--mabv2.17.1-->	<div id="sdrn_bar" class="sdrn_bar" data-from_width="450" style="">
+		<div class="sdrn_ic">
+			<span class="sdrn_ic_1"></span>
+			<span class="sdrn_ic_2"></span>
+			<span class="sdrn_ic_3"></span>
+		</div>
+		<!--<span class="sdrn_icon sdrn_icon_menu" data-icon="m"></span>-->
+		<span class="menu_title">
+									<img class="bar_logo" src="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/NetworkLessons-Logo-Mobile-Menu.png" data-url="https://networklessons.com" alt="NetworkLessons Logo Mobile Menu">		</span>
+	</div>
+
+	<div id="sdrn_menu" class="sdrn_levels right sdrn_jquery  sidr" data-custom_icon="" data-custom_icon_open="" data-zooming="no" data-swipe_actions="no" data-how_wide="80" data-expand_sub_with_parent="yes" style="">
+		<ul id="sdrn_menu_ul" rel="nofollow" style="padding-top: 42px;">
+							<li class="menu-item menu-item-searchbar" style="border-top: none;">
+										<form role="search" method="get" id="sdrn_searchform" action="https://networklessons.com/">
+						<input type="text" onfocus="if(this.value == &#39;Search&#39;) { this.value = &#39;&#39;; }" onblur="if(this.value == &#39;&#39;) { this.value = &#39;Search&#39;; }" value="Search" name="s" id="sdrn_s" class="ui-autocomplete-input" autocomplete="off">
+						<input type="submit" id="sdrn_searchsubmit" value="">
+						<span class="sdrn_icon sdrn_searchsubmit_ic"></span>
+					</form>
+				</li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-10143 parent sdrn_parent_item_li"><span class="sdrn_icon sdrn_icon_par icon_default "></span> <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#" class="sdrn_parent_item"><div></div>Courses</a><br class="sdrn_clear">
+<ul class="sub-menu" style="display: none;">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-20088 parent sdrn_parent_item_li"><span class="sdrn_icon sdrn_icon_par icon_default "></span> <a href="https://networklessons.com/cisco/" class="sdrn_parent_item"><div></div>Cisco</a><br class="sdrn_clear">
+	<ul class="sub-menu" style="display: none;">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-33774"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/"><div></div>CCNA R&amp;S ICND1 100-105</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-40575"><a href="https://networklessons.com/cisco/ccna-routing-switching-icnd2-200-105/"><div></div>CCNA R&amp;S ICND2 200-105</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20090"><a href="https://networklessons.com/cisco/ccnp-route/"><div></div>CCNP ROUTE</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20092"><a href="https://networklessons.com/cisco/ccnp-switch/"><div></div>CCNP SWITCH</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20093"><a href="https://networklessons.com/cisco/ccnp-tshoot/"><div></div>CCNP TSHOOT</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20089"><a href="https://networklessons.com/cisco/ccie-routing-switching/"><div></div>CCIE R&amp;S</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-38428"><a href="https://networklessons.com/cisco/ccie-routing-switching-written/"><div></div>CCIE R&amp;S Written</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37686"><a href="https://networklessons.com/cisco/asa-firewall/"><div></div>ASA Firewall</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7155 parent sdrn_parent_item_li"><span class="sdrn_icon sdrn_icon_par icon_default "></span> <a href="https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/#" class="sdrn_parent_item"><div></div>Routing &amp; Switching</a><br class="sdrn_clear">
+	<ul class="sub-menu" style="display: none;">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20100"><a href="https://networklessons.com/subnetting/"><div></div>Subnetting</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-226"><a href="https://networklessons.com/switching/"><div></div>Switching</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-225"><a href="https://networklessons.com/spanning-tree/"><div></div>Spanning-Tree</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1656"><a href="https://networklessons.com/frame-relay/"><div></div>Frame-Relay</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1665"><a href="https://networklessons.com/rip/"><div></div>RIP</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20102"><a href="https://networklessons.com/eigrp/"><div></div>EIGRP</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20105"><a href="https://networklessons.com/ospf/"><div></div>OSPF</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20101"><a href="https://networklessons.com/bgp/"><div></div>BGP</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1660"><a href="https://networklessons.com/multicast/"><div></div>Multicast</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20103"><a href="https://networklessons.com/ipv6/"><div></div>IPv6</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1664"><a href="https://networklessons.com/quality-of-service/"><div></div>Quality of Service</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20104"><a href="https://networklessons.com/mpls/"><div></div>MPLS</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8339"><a href="https://networklessons.com/new-lessons/"><div></div><i class="fa fa-plus"></i> New Lessons</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7347"><a href="https://networklessons.com/member-ideas/"><div></div><i class="fa fa-lightbulb-o"></i> Lesson Ideas</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8715"><a href="https://forum.networklessons.com/"><div></div>Forum</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23483"><a href="https://networklessons.com/support/"><div></div>Support</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20510"><a href="https://networklessons.com/login/"><div></div>Log In</a></li>
+		</ul>
+	</div>
+	<div class="essb_mailform"><div class="essb_mailform_content"><p>Send this to a friend</p><label class="essb_mailform_content_label">Your email</label><input type="text" id="essb_mailform_from" class="essb_mailform_content_input" placeholder="Your email"><label class="essb_mailform_content_label">Recipient email</label><input type="text" id="essb_mailform_to" class="essb_mailform_content_input" placeholder="Recipient email"><div class="essb_mailform_content_buttons"><button id="essb_mailform_btn_submit" class="essb_mailform_content_button" onclick="essb_mailform_send();">Send</button><button id="essb_mailform_btn_cancel" class="essb_mailform_content_button" onclick="essb_close_mailform(); return false;">Cancel</button></div><input type="hidden" id="essb_mail_salt" value="625870100"><input type="hidden" id="essb_mail_instance" value=""><input type="hidden" id="essb_mail_post" value=""></div></div><div class="essb_mailform_shadow"></div><link rel="stylesheet" id="essb-cct-style" href="./Cisco IOS Router Basic Configuration _ NetworkLessons.com_files/styles.css" type="text/css" media="all"><script type="text/javascript">var essb_handle_stats = function(oService, oPostID, oInstance) { var element = jQuery('.essb_'+oInstance); var instance_postion = jQuery(element).attr("data-essb-position") || ""; var instance_template = jQuery(element).attr("data-essb-template") || ""; var instance_button = jQuery(element).attr("data-essb-button-style") || ""; var instance_counters = jQuery(element).hasClass("essb_counters") ? true : false; var instance_nostats = jQuery(element).hasClass("essb_nostats") ? true : false; if (instance_nostats) { return; } var instance_mobile = false; if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i).test(navigator.userAgent) ) { instance_mobile = true; } if (typeof(essb_settings) != "undefined") { jQuery.post(essb_settings.ajax_url, { 'action': 'essb_stat_log', 'post_id': oPostID, 'service': oService, 'template': instance_template, 'mobile': instance_mobile, 'position': instance_postion, 'button': instance_button, 'counter': instance_counters, 'nonce': essb_settings.essb3_nonce }, function (data) { if (data) { }},'json'); } };var essb_mailform_opened = false; function essb_open_mailform(unique_id) { jQuery.fn.extend({ center: function () { return this.each(function() { var top = (jQuery(window).height() - jQuery(this).outerHeight()) / 2; var left = (jQuery(window).width() - jQuery(this).outerWidth()) / 2; jQuery(this).css({position:'fixed', margin:0, top: (top > 0 ? top : 0)+'px', left: (left > 0 ? left : 0)+'px'}); }); } }); if (essb_mailform_opened) { essb_close_mailform(unique_id); return; } var sender_element = jQuery(".essb_"+unique_id); if (!sender_element.length) return; var sender_post_id = jQuery(sender_element).attr("data-essb-postid") || ""; jQuery("#essb_mail_instance").val(unique_id); jQuery("#essb_mail_post").val(sender_post_id); var win_width = jQuery( window ).width(); var win_height = jQuery(window).height(); var doc_height = jQuery('document').height(); var base_width = 300; if (win_width < base_width) { base_width = win_width - 30; } var height_correction = 20; var element_class = ".essb_mailform"; var element_class_shadow = ".essb_mailform_shadow"; jQuery(element_class).css( { width: base_width+'px'}); var popup_height = jQuery(element_class).outerHeight(); if (popup_height > (win_height - 30)) { jQuery(element_class).css( { height: (win_height - height_correction)+'px'}); } jQuery("#essb_mailform_from").val(""); jQuery("#essb_mailform_to").val(""); if (jQuery("#essb_mailform_c").length) jQuery("#essb_mailform_c").val(""); jQuery(element_class_shadow).css( { height: (win_height)+'px'}); jQuery(element_class).center(); jQuery(element_class).slideDown(200); jQuery(element_class_shadow).fadeIn(200); essb_mailform_opened = true; essb.tracking_only("", "mail", unique_id); }; function essb_close_mailform() { var element_class = ".essb_mailform"; var element_class_shadow = ".essb_mailform_shadow"; jQuery(element_class).fadeOut(200); jQuery(element_class_shadow).fadeOut(200); essb_mailform_opened = false; }; function essb_mailform_send() { var sender_email = jQuery("#essb_mailform_from").val(); var recepient_email = jQuery("#essb_mailform_to").val(); var captcha_validate = jQuery("#essb_mailform_c").length ? true : false; var captcha = captcha_validate ? jQuery("#essb_mailform_c").val() : ""; var custom_message = jQuery("#essb_mailform_custom").length ? jQuery("#essb_mailform_custom").val() : ""; if (sender_email == "" || recepient_email == "" || (captcha == "" && captcha_validate)) { alert("Please fill all fields in form!"); return; } var mail_salt = jQuery("#essb_mail_salt").val(); var instance_post_id = jQuery("#essb_mail_post").val(); console.log("mail salt = " + mail_salt); if (typeof(essb_settings) != "undefined") { jQuery.post(essb_settings.ajax_url, { "action": "essb_mail_action", "post_id": instance_post_id, "from": sender_email, "to": recepient_email, "c": captcha, "cu": custom_message, "salt": mail_salt, "nonce": essb_settings.essb3_nonce }, function (data) { if (data) { console.log(data); alert(data["message"]); if (data["code"] == "1") essb_close_mailform(); }},'json'); } };</script><script data-pagespeed-no-defer="">(function(){window.pagespeed=window.pagespeed||{};var f=window.pagespeed;function h(e,a,c,b){this.f=e;this.a=a;this.b=c;this.g=b}f.beaconUrl="";
+function k(e){var a=e.f,c=window.mod_pagespeed_start,b=Number(new Date)-c,a=a+(-1==a.indexOf("?")?"?":"&"),a=a+"ets="+("load"==e.a?"load:":"unload:"),a=a+b;if("beforeunload"!=e.a||!window.mod_pagespeed_loaded){a+="&r"+e.a+"=";if(window.performance){var b=window.performance.timing,d=b.navigationStart,g=b.requestStart,a=a+(b[e.a+"EventStart"]-d),a=a+("&nav="+(b.fetchStart-d)),a=a+("&dns="+(b.domainLookupEnd-b.domainLookupStart)),a=a+("&connect="+(b.connectEnd-b.connectStart)),a=a+("&req_start="+(g-
+d)),a=a+("&ttfb="+(b.responseStart-g)),a=a+("&dwld="+(b.responseEnd-b.responseStart)),a=a+("&dom_c="+(b.domContentLoadedEventStart-d));window.performance.navigation&&(a+="&nt="+window.performance.navigation.type);d=-1;b.msFirstPaint?d=b.msFirstPaint:window.chrome&&window.chrome.loadTimes&&(d=Math.floor(1E3*window.chrome.loadTimes().firstPaintTime));d=d-g;0<=d&&(a+="&fp="+d)}else a+=b;f.getResourceTimingData&&window.parent==window&&(a+=f.getResourceTimingData());a+=window.parent!=window?"&ifr=1":"&ifr=0";
+"load"==e.a&&(window.mod_pagespeed_loaded=!0,(b=window.mod_pagespeed_num_resources_prefetched)&&(a+="&nrp="+b),(b=window.mod_pagespeed_prefetch_start)&&(a+="&htmlAt="+(c-b)));f.panelLoader&&(c=f.panelLoader.getCsiTimingsString(),""!=c&&(a+="&b_csi="+c));f.criticalCss&&(c=f.criticalCss,a+="&ccis="+c.total_critical_inlined_size+"&cces="+c.total_original_external_size+"&ccos="+c.total_overhead_size+"&ccrl="+c.num_replaced_links+"&ccul="+c.num_unreplaced_links);a+="&dpr="+window.devicePixelRatio;""!=
+e.b&&(a+=e.b);document.referrer&&(a+="&ref="+encodeURIComponent(document.referrer));a+="&url="+encodeURIComponent(e.g);f.beaconUrl=a;(new Image).src=a}}f.c=function(e,a,c,b){var d=new h(e,a,c,b);window.addEventListener?window.addEventListener(a,function(){k(d)},!1):window.attachEvent("on"+a,function(){k(d)})};f.addInstrumentationInit=f.c;})();
+
+pagespeed.addInstrumentationInit('/ngx_pagespeed_beacon', 'load', '&exptid=2', 'https://networklessons.com/cisco/ccna-routing-switching-icnd1-100-105/cisco-ios-router-basic-configuration/');</script>
+<div id="wp-a11y-speak-polite" aria-live="polite" aria-relevant="additions text" aria-atomic="true" class="screen-reader-text wp-a11y-speak-region"></div><div id="wp-a11y-speak-assertive" aria-live="assertive" aria-relevant="additions text" aria-atomic="true" class="screen-reader-text wp-a11y-speak-region"></div><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span></body></html>
