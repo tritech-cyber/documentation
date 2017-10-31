@@ -1,0 +1,17 @@
+apt-get install net-tools
+
+
+Commands: arp(8), 
+hostname(1), 
+ifconfig(8), 
+ipmaddr, 
+iptunnel, 
+mii-tool(8), 
+nameif(8), 
+netstat(8), 
+plipconfig(8), 
+rarp(8), 
+route(8)  
+slattach(8).
+
+Additional mal pages: ethers(5) -- /etc/ethers file for arp(8)
