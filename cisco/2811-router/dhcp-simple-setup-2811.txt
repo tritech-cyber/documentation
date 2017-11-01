@@ -1,0 +1,29 @@
+
+SET UP ROUTER
+
+Router>enable
+Router#configure terminal 
+Router(config)#host R0
+R0(config)#interface FastEthernet 0/0
+R0(config-if)#ip address 192.168.1.1 255.255.255.0
+R0(config-if)#no shutdown
+R0(config-if)#exit
+
+DHCP SETUP (NOTICE THE PROMPT)
+
+R0#configure terminal 
+Enter configuration commands, one per line.  End with CNTL/Z.
+R0(config)#ip dhcp pool IP0
+R0(dhcp-config)#
+R0(dhcp-config)#net 192.168.1.0 255.255.255.0
+R0(dhcp-config)#default 192.168.1.1
+R0(dhcp-config)#exit
+R0(config)#ip dhcp excluded-address 192.168.1.1 192.168.1.99
+R0(config)#exit
+R0#
+R0#copy run startup-config 
+R0#copy run startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R0#show running-config 
