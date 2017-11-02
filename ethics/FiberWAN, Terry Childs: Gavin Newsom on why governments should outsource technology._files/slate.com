@@ -1,0 +1,1 @@
+PARSELY.pInit({"apikey":"slate.com","settings":{"debug":false,"widget":false,"tracker":true},"customizations":null,"track_ip_addresses":true,"bundle":"/code/ptrack-v1.0.0-engagedtime-slots.js","track_third_party_cookies":true,"uuid":"dc2cd7fb-839b-4a58-9001-fff32d47065a","network_uuid":"1ea92e12-afd5-4b3d-8e1e-8c4b86f62270","apikey_uuid":"dc2cd7fb-839b-4a58-9001-fff32d47065a"});

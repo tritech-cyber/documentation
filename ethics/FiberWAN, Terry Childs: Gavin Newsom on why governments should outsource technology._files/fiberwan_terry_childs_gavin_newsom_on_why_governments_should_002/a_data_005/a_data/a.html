@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <style>
+		html {
+			height: 100%;
+			width: 100%;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+		.ad-element {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="ad-element">
+	</div>
+	<script>
+		function notifyReady(success) {
+			var parentCallback = parent["vpaid_callback_vpaidIframe_11509622721902"];
+			if (typeof parentCallback === 'function'){
+				parentCallback(success);
+			}
+		}
+	</script>
+    <script type="text/javascript" src="../sam.js" onload="notifyReady(true)" onerror="notifyReady(false)"></script>
+
+
+</body></html>

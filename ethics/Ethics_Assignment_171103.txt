@@ -1,0 +1,45 @@
+Cyber Security Ethics Assignment
+4 Parts
+- Read Unit+0+-+Cyber+Ethics+(Presentation).pdf 
+- Create a document in your google drive and place it in "English"
+	folder called "Ethic-TerryChilds_initials". Answer the questions.
+- Create a dcoument called "Ethics_Document_Intials"
+	Example "Ethics_Document_cwc"
+	and save it in your google drive.  Type the text from the
+	example posted at tritechsc.ksd.org/cyber/documentation/ethics/
+	Add your 3 "Do Statements"
+- Goto https://2017.picoctf.com/ and register with the email you use 
+	for Github.com
+	Start the game.
+
+
+Go to the following URL:
+https://www.uscyberpatriot.org/competition/training-materials/training-modules
+or just open the downloaded pdf.
+Unit+0+-+Cyber+Ethics+(Presentation).pdf
+
+Look at CURRENT EVENT ONE
+Terry Childs As told by former San Francisco Mayor Gavin  Newsom  to Slate Magazine
+
+Search "Terry Childs As told by former San Francisco Mayor Gavin  Newsom  to Slate Magazine
+"
+
+Answer the following questions.
+• Should Terry Childs have been arrested?
+• Which principle(s) of cyber ethics did Terry  Childs violate, if any?
+
+Back up plan if picoctf.com does not work.
+Login to https://www.shodan.io/ with your username@tritechsc.org
+account.
+- Search 52.32.8.190  
+	What is going on with this ip?
+	Where is it?
+- Search 31.13.70.36 
+	What is going on with this ip?
+	
+- Find game servers ip addresss and record them.
+- Record your  API Key	ikn your notes lqrvD4Uk98OigimTQ5QDhLWb4kjKor5L 
+
+
+Save data in google drive "Computer Science"
+call file shodan.io_notes_initials
