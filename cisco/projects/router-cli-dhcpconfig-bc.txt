@@ -1,0 +1,47 @@
+enable
+config terminal
+host R1
+interface g0/0
+ip add 192.168.10.1  255.255.255.0
+no shut
+
+exit
+ip dhcp pool IP30
+net 192.168.10.0 255.255.255.0
+default  192.168.10.1
+exit
+ip dhcp exc 192.168.10.1 192.168.10.99
+exit
+
+copy run startup
+
+sh  run
+
+config terminal
+
+Router(config)#service dhcp
+Router(config)#ip dhcp pool 21net
+Router(dhcp-config)#network 192.168.1.1 255.255.255.0
+Router(dhcp-config)#dns-server 192.168.1.1
+
+Router(dhcp-config)#dns-server 192.168.1.10
+Router(dhcp-config)#default-router 192.168.1.1
+Router(dhcp-config)#exit
+Router(config)#interface GigabitEthernet0/0
+Router(config-if)#exit
+Router(config)#hostname R1
+R1(config)#interface GigabitEthernet0/0
+R1(config-if)#shutdown
+no shutdown
+
+R1(config-if)#ip address 192.168.10.1 255.255.255.0
+R1(config-if)#no shutdown 
+R1(config-if)#exit
+R1(config)#ip dhcp pool IP30
+R1(dhcp-config)#net 192.168.10.0 255.255.255.0
+R1(dhcp-config)#default 192.168.10.1
+R1(dhcp-config)#exit
+R1(config)#ip dhcp excluded-address 192.168.10.1 192.168.10.99
+R1(config)#exit
+R1#copy run startup-config 
+R1#show running-config
