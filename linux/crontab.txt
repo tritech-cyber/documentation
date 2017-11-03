@@ -1,0 +1,40 @@
+This is a simple start that I tested with gentoo and centos7 (cwcoleman)
+Change  makelogs.sh to match the text below.  Only use arp -a
+Text highlighted in yellow is critical text.  Everything else is extra.
+Text highlighted in cyan is what your type from terminal (tty).
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+Notice the /bin/bash -l code in the crontab -e  .   This invokes a new bash session inside a bash session.
+
+Notice the  #!/bin/bash in the
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+Type crontab -e as root
+#crontab -e
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+*/30 * * * * /bin/bash -l /home/cwc/bash/makelogs.sh
+
+'##end of crontab                                          
+
+This is the script that gets called from crontab call this file makelogs.sh
+#!/bin/bash
+NOW=$(date +"%Y-%m-%d-%T");
+LOGFILE="log-$NOW.txt";
+arp -a  >> /home/cwc/html/logs/$LOGFILE;
+
+//end of script
+
+Make sure to give it executable permissions:
+$chmod +x makelogs.sh
+Restart crontab if you wish. 
